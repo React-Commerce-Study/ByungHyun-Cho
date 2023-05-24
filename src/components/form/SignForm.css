@@ -6,7 +6,7 @@
 }
 
 a {
-  color: #666;
+  color: black;
   text-decoration: none;
 }
 
@@ -19,7 +19,7 @@ input {
 }
 
 body {
-  color: #666;
+  color: black;
   background-color: #f1f2f2;
   font: 16px/26px "Raleway", sans-serif;
 }
@@ -27,7 +27,7 @@ body {
 .form-wrap {
   background-color: #fff;
   width: 550px;
-  height: 388px;
+  /* height: 388px; */
   margin: 3em auto;
   border-radius: 15px;
   border: 1px solid #C4C4C4;
@@ -50,7 +50,6 @@ body {
   font-weight: 400;
   background-color: #e6e7e8;
   display: block;
-  color: #666;
   font-size: 18px;
   font-weight: bold;
   border-bottom: 1px solid #C4C4C4;
@@ -78,6 +77,7 @@ body {
 .form-wrap .tabs-content .active {
   display: flex !important;
   flex-direction: column;
+  width: 100%;
 
 
 }
@@ -101,6 +101,8 @@ body {
 
 .form-wrap form .button {
   width: 100%;
+  height: 60px;
+  box-sizing: border-box;
   padding: .8em 0 10px .8em;
   background-color: #21BF48;
   border: none;
@@ -127,13 +129,14 @@ body {
   opacity: 1;
 }
 
+/* 
 .form-wrap form label[for] {
   position: relative;
   padding-left: 20px;
   cursor: pointer;
-}
+} */
 
-.form-wrap form label[for]:before {
+/* .form-wrap form label[for]:before {
   content: '';
   position: absolute;
   border: 1px solid #CFCFCF;
@@ -162,13 +165,13 @@ body {
   -o-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
-}
+} */
 
-.form-wrap .help-text {
+/* .form-wrap .help-text {
   margin-top: .6em;
 }
 
 .form-wrap .help-text p {
   text-align: center;
   font-size: 14px;
-}
+} */
