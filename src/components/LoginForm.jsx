@@ -5,23 +5,24 @@ import "./LoginForm.css";
 const LoginForm = () => {
   useEffect(() => {
     changeTab();
-  });
+  }, []);
 
   function changeTab() {
-    const tab = document.querySelectorAll(".tabs h3 a");
-    tab.forEach((element) => {
-      element.addEventListener("click", function (event) {
-        console.log("test");
-        event.preventDefault();
-        element.classList.remove("active");
-        this.classList.add("active");
-
-        const tabContent = document.querySelector(".tabs-content");
-        tabContent.classList.remove("active");
-        document
-          .querySelector(this.getAttribute("href"))
-          .classList.add("active");
-      });
+    const loginTab = document.querySelector(".tabs .seller-login-tab a");
+    const signUpTab = document.querySelector(".tabs .buyer-login-tab a");
+    const signUpTabContent = document.querySelector("#buyer-login-tab-content");
+    const loginTabContent = document.querySelector("#seller-login-tab-content");
+    loginTab.addEventListener("click", function () {
+      loginTab.classList.add("active");
+      signUpTab.classList.remove("active");
+      loginTabContent.classList.add("active");
+      signUpTabContent.classList.remove("active");
+    });
+    signUpTab.addEventListener("click", function () {
+      signUpTab.classList.add("active");
+      loginTab.classList.remove("active");
+      signUpTabContent.classList.add("active");
+      loginTabContent.classList.remove("active");
     });
   }
 
@@ -30,75 +31,54 @@ const LoginForm = () => {
       <img src={Logo} alt="" />
       <div className="form-wrap">
         <div className="tabs">
-          <h3 className="signup-tab">
-            <a className="active" href="#signup-tab-content">
-              Sign Up
+          <h3 className="buyer-login-tab">
+            <a className="active" href="#buyer-login-tab-content">
+              구매회원 로그인
             </a>
           </h3>
-          <h3 className="login-tab">
-            <a href="#login-tab-content">Login</a>
+          <h3 className="seller-login-tab">
+            <a href="#seller-login-tab-content"> 판매회원 로그인</a>
           </h3>
         </div>
         <div className="tabs-content">
-          <div id="signup-tab-content" className="active">
-            <form className="signup-form" action="" method="post">
-              <input
-                type="email"
-                className="input"
-                id="user_email"
-                autoComplete="off"
-                placeholder="Email"
-              />
-              <input
-                type="text"
-                className="input"
-                id="user_name"
-                autoComplete="off"
-                placeholder="Username"
-              />
-              <input
-                type="password"
-                className="input"
-                id="user_pass"
-                autoComplete="off"
-                placeholder="Password"
-              />
-              <input type="submit" className="button" value="Sign Up" />
-            </form>
-            <div className="help-text">
-              <p>By signing up, you agree to our</p>
-              <p>
-                <a href="#">Terms of service</a>
-              </p>
-            </div>
-          </div>
-
-          <div id="login-tab-content">
-            <form className="login-form" action="" method="post">
+          <div id="seller-login-tab-content" className="active">
+            <form className="seller-login-form" action="" method="post">
               <input
                 type="text"
                 className="input"
                 id="user_login"
                 autoComplete="off"
-                placeholder="Email or Username"
+                placeholder="아이디"
               />
               <input
                 type="password"
                 className="input"
                 id="user_pass"
                 autoComplete="off"
-                placeholder="Password"
+                placeholder="비밀번호"
               />
-              <input type="checkbox" className="checkbox" id="remember_me" />
-              <label htmlFor="remember_me">Remember me</label>
-
-              <input type="submit" className="button" value="Login" />
+              <input type="submit" className="button" value="로그인" />
             </form>
-            <div className="help-text">
-              <p>
-                <a href="#">Forget your password?</a>
-              </p>
-            </div>
+          </div>
+
+          <div id="buyer-login-tab-content">
+            <form className="buyer-login-form" action="" method="post">
+              <input
+                type="text"
+                className="input"
+                id="user_login"
+                autoComplete="off"
+                placeholder="아이디"
+              />
+              <input
+                type="password"
+                className="input"
+                id="user_pass"
+                autoComplete="off"
+                placeholder="비밀번호"
+              />
+              <input type="submit" className="button" value="로그인" />
+            </form>
           </div>
         </div>
       </div>
