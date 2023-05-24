@@ -26,15 +26,17 @@ body {
 
 .form-wrap {
   background-color: #fff;
-  width: 320px;
+  width: 550px;
+  height: 388px;
   margin: 3em auto;
-  box-shadow: 0px 1px 8px #BEBEBE;
-  -webkit-box-shadow: 0px 1px 8px #BEBEBE;
-  -moz-box-shadow: 0px 1px 8px #BEBEBE;
+  border-radius: 15px;
+  border: 1px solid #C4C4C4;
 }
 
 .form-wrap .tabs {
   overflow: hidden;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
 
 .form-wrap .tabs h3 {
@@ -43,20 +45,30 @@ body {
 }
 
 .form-wrap .tabs h3 a {
-  padding: 0.5em 0;
+  padding: 0.9em 0;
   text-align: center;
   font-weight: 400;
   background-color: #e6e7e8;
   display: block;
   color: #666;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #C4C4C4;
+}
+
+.tabs .buyer-login-tab a {
+  border-right: 1px solid #C4C4C4;
 }
 
 .form-wrap .tabs h3 a.active {
   background-color: #fff;
+  border-bottom: none;
 }
 
 .form-wrap .tabs-content {
   padding: 1.5em;
+  display: flex;
+  /* border-top: 1px solid #C4C4C4; */
 }
 
 .form-wrap .tabs-content div[id$="tab-content"] {
@@ -64,7 +76,10 @@ body {
 }
 
 .form-wrap .tabs-content .active {
-  display: block !important;
+  display: flex !important;
+  flex-direction: column;
+
+
 }
 
 .form-wrap form .input {
@@ -73,12 +88,15 @@ body {
   color: inherit;
   font-family: inherit;
   padding: .8em 0 10px .8em;
-  border: 1px solid #CFCFCF;
+  padding-bottom: 0px;
+  border: none;
+  border-bottom: 1px solid #CFCFCF;
   outline: 0;
   display: inline-block;
   margin: 0 0 .8em 0;
   padding-right: 2em;
   width: 100%;
+  height: 60px;
 }
 
 .form-wrap form .button {
@@ -89,6 +107,8 @@ body {
   color: #fff;
   cursor: pointer;
   text-transform: uppercase;
+  margin-top: 72px;
+  border-radius: 10px;
 }
 
 .form-wrap form .button:hover {
