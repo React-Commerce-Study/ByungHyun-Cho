@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const FormWrap = styled.form`
@@ -16,6 +16,40 @@ const FormWrap = styled.form`
   }
 `;
 const SignUpComponents = () => {
+  const [userInput, setUserInput] = useState({
+    username: "zzz1234zzz",
+    password: "zaq1234567",
+    password2: "zaq1234567",
+    phone_number: "01026587994",
+    name: "조병현",
+  });
+
+  async function fetchLogin() {
+    console.log(userInput);
+    try {
+      const response = await fetch(
+        `https://openmarket.weniv.co.kr/accounts/signup/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify(userInput),
+        }
+      );
+      console.log(response);
+      if (!response.ok) {
+        console.log("틀림");
+        // alert("아이디 비밀번호를 확인해주세요!");
+      } else {
+        // navigate("/", { state: { loginCheck } });
+        console.log("성공!");
+      }
+    } catch (error) {
+      console.error("데이터를 가져오는데 문제가 생겼습니다.", error);
+    }
+  }
+
   return (
     <div className="form-wrap">
       <div className="tabs">
@@ -50,7 +84,7 @@ const SignUpComponents = () => {
         </div>
 
         <div id="buyer-login-tab-content" className="active">
-          <FormWrap className="buyer-signup-form" action="" method="post">
+          <FormWrap className="buyer-signup-form">
             <label htmlFor="buyer-signup-id">아이디</label>
             <div>
               <input type="text" id="buyer-signup-id" />
@@ -64,7 +98,9 @@ const SignUpComponents = () => {
             <input type="text" id="buyer-signup-name" />
             <label htmlFor="buyer-signup-name">휴대폰번호</label>
             <input type="number" id="buyer-signup-phone" />
-            <input type="submit" className="button" value="구매 회원가입" />
+            <button onClick={() => fetchLogin()} className="button">
+              구매 회원가입
+            </button>
           </FormWrap>
         </div>
       </div>
