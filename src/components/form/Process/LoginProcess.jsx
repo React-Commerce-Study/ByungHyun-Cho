@@ -4,8 +4,6 @@ import ProductList from "../../../pages/ProductList";
 
 const LoginProcess = ({ userInput, setUserCheck }) => {
   const [loginCheck, setloginCheck] = useState(false);
-  console.log(userInput);
-  console.log(setUserCheck);
   const navigate = useNavigate();
   useEffect(() => {
     fetchLogin();

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
+// import Carousel from "./Carousel";
+import Carousel from "./Carousel";
 const StyledBanner = styled.div`
   height: 500px;
   width: 100%;
@@ -12,7 +13,7 @@ const StyledBanner = styled.div`
 const Banner = () => {
   return (
     <StyledBanner>
-      <div>배너입니다</div>
+      <Carousel />
     </StyledBanner>
   );
 };

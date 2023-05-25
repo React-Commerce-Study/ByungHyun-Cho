@@ -3,7 +3,6 @@ import LoginProcess from "../Process/LoginProcess";
 
 const LoginComponets = ({ setReRender }) => {
   const [userCheck, setUserCheck] = useState(false);
-
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
@@ -22,11 +21,9 @@ const LoginComponets = ({ setReRender }) => {
         login_type: "SELLER",
       });
     }
-    console.log(userInput);
-    console.log(userCheck);
-
     setUserCheck(true);
   }
+
   setReRender(userCheck);
 
   return (

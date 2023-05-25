@@ -5,14 +5,12 @@ import SignUpComponents from "./formComponents/SignUpComponents";
 
 const SignForm = ({ type }) => {
   const [reRender, setReRender] = useState(false);
-  console.log(reRender);
   useEffect(() => {
     changeTab();
   }, [reRender]);
 
   function changeTab() {
     if (!reRender) {
-      console.log("들어옴?");
       const sellerTab = document.querySelector(".tabs .seller-login-tab a");
       const buyerTab = document.querySelector(".tabs .buyer-login-tab a");
       const buyerTabContent = document.querySelector(
