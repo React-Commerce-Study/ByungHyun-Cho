@@ -12,7 +12,7 @@ const Img = styled.img`
 const SignNav = styled.div`
   display: flex;
 `;
-const Form = styled.form`
+const Form = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

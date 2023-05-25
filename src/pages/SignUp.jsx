@@ -8,7 +8,7 @@ const Img = styled.img`
   cursor: pointer;
   margin-top: 100px;
 `;
-const Form = styled.form`
+const Form = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

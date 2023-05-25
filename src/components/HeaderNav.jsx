@@ -60,10 +60,17 @@ const HeaderNav = ({ user }) => {
           <StyledNavImg onClick={goAddCart} src={Cart} alt="logo" />
           <div>장바구니</div>
         </StyledCartBtn>
-        <StyledCartBtn>
-          <StyledNavImg onClick={goLogin} src={UserInfo} alt="logo" />
-          <div>로그인</div>
-        </StyledCartBtn>
+        {user === null ? (
+          <StyledCartBtn>
+            <StyledNavImg onClick={goLogin} src={UserInfo} alt="logo" />
+            <div>로그인</div>
+          </StyledCartBtn>
+        ) : (
+          <StyledCartBtn>
+            <StyledNavImg src={UserInfo} alt="logo" />
+            <div>마이페이지</div>
+          </StyledCartBtn>
+        )}
       </StyledNavbarRight>
     </StyledHeaderNav>
   );
