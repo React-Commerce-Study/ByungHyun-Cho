@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductList from "../../../pages/ProductList";
 
-const LoginProcess = ({ userInput }) => {
+const LoginProcess = ({ userInput, setUserCheck }) => {
   const [loginCheck, setloginCheck] = useState(false);
-  // const [user, setUser] = useState({
-  //   username: "buyer1",
-  //   password: "hodu0910",
-  //   login_type: "BUYER",
-  // });
   console.log(userInput);
+  console.log(setUserCheck);
   const navigate = useNavigate();
   useEffect(() => {
     fetchLogin();
   }, []);
+
   async function fetchLogin() {
     try {
       const response = await fetch(
@@ -28,9 +25,11 @@ const LoginProcess = ({ userInput }) => {
       );
       console.log(response);
       if (!response.ok) {
-        throw new Error("네트워크에 문제가 있습니다.");
+        console.log("틀림");
+        alert("아이디 비밀번호를 확인해주세요!");
+        setUserCheck(false);
       } else {
-        const data = await response.json();
+        // const data = await response.json();
         setloginCheck(true);
         navigate("/", { state: { loginCheck } });
       }

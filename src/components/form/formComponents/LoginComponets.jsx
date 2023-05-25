@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import LoginProcess from "../Process/LoginProcess";
 
-const LoginComponets = () => {
+const LoginComponets = ({ setReRender }) => {
   const [userCheck, setUserCheck] = useState(false);
+
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
@@ -22,9 +23,12 @@ const LoginComponets = () => {
       });
     }
     console.log(userInput);
+    console.log(userCheck);
 
     setUserCheck(true);
   }
+  setReRender(userCheck);
+
   return (
     <>
       {userCheck === false ? (
@@ -98,7 +102,7 @@ const LoginComponets = () => {
           </div>
         </div>
       ) : (
-        <LoginProcess userInput={userInput} />
+        <LoginProcess userInput={userInput} setUserCheck={setUserCheck} />
       )}
     </>
   );
