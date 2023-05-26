@@ -25,7 +25,7 @@ export default function ImageList({ imageList }) {
               img={item.image}
               title={item.product_name}
               store={item.store_name}
-              price={item.price}
+              price={item.price.toLocaleString()}
               product_id={item.product_id}
             />
           </StyledImageList>

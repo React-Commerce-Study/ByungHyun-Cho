@@ -107,7 +107,9 @@ const ProductInfo = () => {
               <div>총금액</div>
               <ProductInfoPrice>
                 <div>총 수량 1개 |</div>
-                <ProductInfoTotalPrice>10000원</ProductInfoTotalPrice>
+                <ProductInfoTotalPrice>
+                  {productInfo.price}
+                </ProductInfoTotalPrice>
               </ProductInfoPrice>
             </ProductInfoPriceDiv>
             <ProductInfoBtn>
