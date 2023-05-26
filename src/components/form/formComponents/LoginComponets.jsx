@@ -3,6 +3,7 @@ import LoginProcess from "../Process/LoginProcess";
 
 const LoginComponets = ({ setReRender }) => {
   const [userCheck, setUserCheck] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
@@ -24,7 +25,7 @@ const LoginComponets = ({ setReRender }) => {
     setUserCheck(true);
   }
 
-  setReRender(userCheck);
+  // setReRender(userCheck);
 
   return (
     <>
@@ -32,16 +33,33 @@ const LoginComponets = ({ setReRender }) => {
         <div className="form-wrap">
           <div className="tabs">
             <h3 className="buyer-login-tab">
-              <a className="active" href="#buyer-login-tab-content">
+              <a
+                className={toggle ? "active" : ""}
+                href="#buyer-login-tab-content"
+                onClick={() => {
+                  setToggle(true);
+                }}
+              >
                 구매회원 로그인
               </a>
             </h3>
             <h3 className="seller-login-tab">
-              <a href="#seller-login-tab-content"> 판매회원 로그인</a>
+              <a
+                className={toggle ? "" : "active"}
+                href="#seller-login-tab-content"
+                onClick={() => {
+                  setToggle(false);
+                }}
+              >
+                판매회원 로그인
+              </a>
             </h3>
           </div>
           <div className="tabs-content">
-            <div id="buyer-login-tab-content" className="active">
+            <div
+              id="buyer-login-tab-content"
+              className={toggle ? "active" : ""}
+            >
               <form className="buyer-login-form">
                 <input
                   type="text"
@@ -77,7 +95,10 @@ const LoginComponets = ({ setReRender }) => {
                 </button>
               </form>
             </div>
-            <div id="seller-login-tab-content">
+            <div
+              id="seller-login-tab-content"
+              className={toggle ? "" : "active"}
+            >
               <form className="seller-login-form" action="" method="post">
                 <input
                   type="text"

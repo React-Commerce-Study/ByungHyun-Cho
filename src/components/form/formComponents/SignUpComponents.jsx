@@ -16,6 +16,8 @@ const FormWrap = styled.form`
   }
 `;
 const SignUpComponents = () => {
+  const [toggle, setToggle] = useState(true);
+
   const [userInput, setUserInput] = useState({
     username: "zzz1234zzz",
     password: "zaq1234567",
@@ -54,16 +56,31 @@ const SignUpComponents = () => {
     <div className="form-wrap">
       <div className="tabs">
         <h3 className="buyer-login-tab">
-          <a className="active" href="#buyer-login-tab-content">
+          <a
+            className={toggle ? "active" : ""}
+            href="#buyer-login-tab-content"
+            onClick={() => {
+              setToggle(true);
+            }}
+          >
             구매회원가입
           </a>
         </h3>
         <h3 className="seller-login-tab">
-          <a href="#seller-login-tab-content"> 판매회원가입</a>
+          <a
+            href="#seller-login-tab-content"
+            className={toggle ? "" : "active"}
+            onClick={() => {
+              setToggle(false);
+            }}
+          >
+            {" "}
+            판매회원가입
+          </a>
         </h3>
       </div>
       <div className="tabs-content">
-        <div id="seller-login-tab-content">
+        <div id="seller-login-tab-content" className={toggle ? "" : "active"}>
           <form className="seller-login-form" action="" method="post">
             <input
               type="text"
@@ -83,7 +100,7 @@ const SignUpComponents = () => {
           </form>
         </div>
 
-        <div id="buyer-login-tab-content" className="active">
+        <div id="buyer-login-tab-content" className={toggle ? "active" : ""}>
           <FormWrap className="buyer-signup-form">
             <label htmlFor="buyer-signup-id">아이디</label>
             <div>
