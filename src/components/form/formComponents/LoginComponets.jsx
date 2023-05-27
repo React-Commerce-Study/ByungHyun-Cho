@@ -13,19 +13,13 @@ const LoginComponets = ({ setReRender }) => {
   const fetchLogin = useLoginProcess({ userInput });
   console.log(userInput);
   function loginCheckfunc(type) {
-    if (type === "buyer") {
-      setUserInput({
-        ...userInput,
-        login_type: "BUYER",
-      });
-    } else {
-      setUserInput({
-        ...userInput,
-        login_type: "SELLER",
-      });
-    }
+    const loginType = type === "buyer" ? "BUYER" : "SELLER";
+    setUserInput({
+      ...userInput,
+      login_type: loginType,
+    });
     console.log(userInput);
-    fetchLogin();
+    fetchLogin(userInput, loginType);
 
     // setUserCheck(true);
   }

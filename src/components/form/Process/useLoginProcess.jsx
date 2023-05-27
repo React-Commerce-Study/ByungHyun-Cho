@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductList from "../../../pages/ProductList";
 
-const useLoginProcess = ({ userInput }) => {
+const useLoginProcess = () => {
   const [loginCheck, setloginCheck] = useState(false);
   const navigate = useNavigate();
-  console.log(userInput);
 
-  async function fetchLogin() {
+  async function fetchLogin(userInput, loginType) {
     console.log(userInput);
 
     try {
@@ -18,12 +17,14 @@ const useLoginProcess = ({ userInput }) => {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
           },
-          body: JSON.stringify(userInput),
+          body: JSON.stringify({ ...userInput, login_type: loginType }),
         }
       );
       console.log(response);
       if (!response.ok) {
         console.log("틀림");
+        console.log(userInput);
+
         alert("아이디 비밀번호를 확인해주세요!");
         // setUserCheck(false);
       } else {
