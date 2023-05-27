@@ -23,7 +23,12 @@ const ProductProcess = () => {
       console.error("데이터를 가져오는데 문제가 생겼습니다.", error);
     }
   }
-  return <ImageList imageList={imageList} />;
+  return (
+    <>
+      <ImageList imageList={imageList} />
+      <div>123</div>
+    </>
+  );
 };
 
 export default ProductProcess;

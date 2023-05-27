@@ -48,6 +48,7 @@ const HeaderNav = ({ user }) => {
   function goLogin() {
     navigate("/login");
   }
+  console.log(user);
 
   return (
     <StyledHeaderNav className="navbar">
@@ -60,7 +61,7 @@ const HeaderNav = ({ user }) => {
           <StyledNavImg onClick={goAddCart} src={Cart} alt="logo" />
           <div>장바구니</div>
         </StyledCartBtn>
-        {user === null ? (
+        {user === null || user === undefined ? (
           <StyledCartBtn>
             <StyledNavImg onClick={goLogin} src={UserInfo} alt="logo" />
             <div>로그인</div>
