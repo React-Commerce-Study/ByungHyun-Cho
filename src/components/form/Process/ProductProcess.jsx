@@ -8,8 +8,9 @@ const ProductProcess = () => {
   const [fetchPage, setFetchPage] = useState(basicURL);
   const [pageSet, setPageSet] = useState(1);
   const [productPage, setProductPage] = useState([]);
-
+  const dataResultsLength = 15;
   let productPageNum = 0;
+
   useEffect(() => {
     console.log(pageSet);
     if (pageSet === 1) {
@@ -46,7 +47,8 @@ const ProductProcess = () => {
   }, [fetchPage]);
 
   function pageNumSet(data) {
-    productPageNum = Math.ceil(data.count / data.results.length);
+    productPageNum = Math.ceil(data.count / dataResultsLength);
+
     const pages = [];
     for (let i = 1; i <= productPageNum; i++) {
       pages.push(i);

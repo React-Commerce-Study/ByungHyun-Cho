@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
+
 const ProductPageNav = styled.div`
   display: flex;
   align-items: center;
@@ -8,7 +10,7 @@ const ProductPageNav = styled.div`
   margin: 40px 0;
   border-top: 1px solid #121213;
   border-bottom: 1px solid #121213;
-  div {
+  a {
     display: flex;
     cursor: pointer;
     text-align: center;
@@ -22,23 +24,32 @@ const ProductPageNav = styled.div`
 
 const ProductListPage = ({ setPageSet, productPage }) => {
   const [clickedIndex, setClickedIndex] = useState(0);
+  const navigate = useNavigate();
 
   function ProductNav(num, index) {
     setPageSet(num.item);
     setClickedIndex(index);
+    navigate(`/product/${num.item}`);
   }
+  // function goBackToProductList() {
+  //   setPageSet(1);
+  //   setClickedIndex(0);
+  //   navigate("/product/1"); // Adjust the route based on your actual first product list route
+  // }
 
   return (
     <ProductPageNav>
+      {/* <Link onClick={goBackToProductList}>Back to First Product List</Link> */}
       {productPage.map((item, index) => {
         return (
-          <div
+          <Link
+            to={`/product/${item}`}
             onClick={() => ProductNav({ item }, index)}
             className={clickedIndex === index ? "toggleActive" : ""}
             key={item}
           >
             {item}
-          </div>
+          </Link>
         );
       })}
     </ProductPageNav>

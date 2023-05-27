@@ -10,7 +10,7 @@ const Img = styled.img`
 const LogoCompoent = () => {
   const navigate = useNavigate();
   function goMain() {
-    navigate("/");
+    navigate("/product/1");
   }
   return <Img onClick={goMain} src={Logo}></Img>;
 };

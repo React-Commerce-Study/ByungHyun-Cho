@@ -39,7 +39,7 @@ const StyledNavImg = styled.img`
 const HeaderNav = ({ user }) => {
   const navigate = useNavigate();
   function goMain() {
-    navigate("/");
+    navigate("/product/1");
   }
   function goAddCart() {
     navigate("/addcart");
