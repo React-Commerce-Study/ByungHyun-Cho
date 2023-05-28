@@ -31,19 +31,13 @@ const ProductListPage = ({ setPageSet, productPage }) => {
     setClickedIndex(index);
     navigate(`/product/${num.item}`);
   }
-  // function goBackToProductList() {
-  //   setPageSet(1);
-  //   setClickedIndex(0);
-  //   navigate("/product/1"); // Adjust the route based on your actual first product list route
-  // }
-
   return (
     <ProductPageNav>
       {/* <Link onClick={goBackToProductList}>Back to First Product List</Link> */}
       {productPage.map((item, index) => {
         return (
           <Link
-            to={`/product/${item}`}
+            to={`/${item}`}
             onClick={() => ProductNav({ item }, index)}
             className={clickedIndex === index ? "toggleActive" : ""}
             key={item}
