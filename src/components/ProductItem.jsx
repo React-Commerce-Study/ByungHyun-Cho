@@ -17,7 +17,7 @@ const StyledStore = styled.div`
 const StyledProductContainer = styled.div`
   cursor: pointer;
 `;
-export default function ImageItem({ img, title, store, price, product_id }) {
+export default function ProductItem({ img, title, store, price, product_id }) {
   const navigate = useNavigate();
 
   function goProductInfo() {

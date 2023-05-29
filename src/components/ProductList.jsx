@@ -1,5 +1,5 @@
 import React from "react";
-import ImageItem from "./ImageItem";
+import ProductItem from "./ProductItem";
 import styled from "styled-components";
 
 const StyledImageList = styled.li`
@@ -15,13 +15,13 @@ const StyledImageContainer = styled.ul`
   gap: 70px;
 `;
 
-export default function ImageList({ imageList }) {
+export default function ImageList({ productList }) {
   return (
     <StyledImageContainer>
-      {imageList.map((item) => {
+      {productList.map((item) => {
         return (
           <StyledImageList key={item.product_id}>
-            <ImageItem
+            <ProductItem
               img={item.image}
               title={item.product_name}
               store={item.store_name}

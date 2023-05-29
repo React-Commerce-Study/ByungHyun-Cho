@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Banner from "../components/Banner";
-import ImageList from "../components/ImageList";
 import HeaderNav from "../components/HeaderNav";
 import WenivFooter from "../components/WenivFooter";
 import ProductProcess from "../components/form/Process/ProductProcess";

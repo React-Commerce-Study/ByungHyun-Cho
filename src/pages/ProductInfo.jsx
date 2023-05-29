@@ -3,6 +3,53 @@ import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import HeaderNav from "../components/HeaderNav";
 
+const ProductInfo = () => {
+  const location = useLocation();
+  const productInfo = location.state;
+
+  return (
+    <>
+      <HeaderNav />
+      <StyledProductInfoContainer>
+        <StyledProductInfoImgContainer>
+          <ProductInfoImg src={productInfo.img} alt="img"></ProductInfoImg>
+          <StyledProductInfoOrderContainer>
+            <div>{productInfo.store}</div>
+            <StyledProductInfoTitle>{productInfo.title}</StyledProductInfoTitle>
+            <PriceContainer>
+              <Price>{productInfo.price}</Price>
+              <div>원</div>
+            </PriceContainer>
+            <div>택배배송 / 무료배송</div>
+            <ProcudctInfoItems>+/-</ProcudctInfoItems>
+            <ProductInfoPriceDiv>
+              <div>총금액</div>
+              <ProductInfoPrice>
+                <div>총 수량 1개 |</div>
+                <ProductInfoTotalPrice>
+                  {productInfo.price}
+                </ProductInfoTotalPrice>
+              </ProductInfoPrice>
+            </ProductInfoPriceDiv>
+            <ProductInfoBtn>
+              <ProductBtnBuy>바로구매</ProductBtnBuy>
+              <ProductBtnCart>장바구니</ProductBtnCart>
+            </ProductInfoBtn>
+          </StyledProductInfoOrderContainer>
+        </StyledProductInfoImgContainer>
+        <ProductInfoReview>
+          <div>버튼</div>
+          <div>리뷰</div>
+          <div>q&a</div>
+          <div>반품</div>
+        </ProductInfoReview>
+      </StyledProductInfoContainer>
+    </>
+  );
+};
+
+export default ProductInfo;
+
 const StyledProductInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -81,52 +128,3 @@ const ProductInfoReview = styled.div`
   display: flex;
   justify-content: center;
 `;
-
-const ProductInfo = () => {
-  const location = useLocation();
-  const productInfo = location.state;
-  console.log(productInfo);
-
-  return (
-    <>
-      <HeaderNav />
-
-      <StyledProductInfoContainer>
-        <StyledProductInfoImgContainer>
-          <ProductInfoImg src={productInfo.img} alt="img"></ProductInfoImg>
-          <StyledProductInfoOrderContainer>
-            <div>{productInfo.store}</div>
-            <StyledProductInfoTitle>{productInfo.title}</StyledProductInfoTitle>
-            <PriceContainer>
-              <Price>{productInfo.price}</Price>
-              <div>원</div>
-            </PriceContainer>
-            <div>택배배송 / 무료배송</div>
-            <ProcudctInfoItems>+/-</ProcudctInfoItems>
-            <ProductInfoPriceDiv>
-              <div>총금액</div>
-              <ProductInfoPrice>
-                <div>총 수량 1개 |</div>
-                <ProductInfoTotalPrice>
-                  {productInfo.price}
-                </ProductInfoTotalPrice>
-              </ProductInfoPrice>
-            </ProductInfoPriceDiv>
-            <ProductInfoBtn>
-              <ProductBtnBuy>바로구매</ProductBtnBuy>
-              <ProductBtnCart>장바구니</ProductBtnCart>
-            </ProductInfoBtn>
-          </StyledProductInfoOrderContainer>
-        </StyledProductInfoImgContainer>
-        <ProductInfoReview>
-          <div>버튼</div>
-          <div>리뷰</div>
-          <div>q&a</div>
-          <div>반품</div>
-        </ProductInfoReview>
-      </StyledProductInfoContainer>
-    </>
-  );
-};
-
-export default ProductInfo;
