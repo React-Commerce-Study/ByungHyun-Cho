@@ -8,11 +8,17 @@ import Cart from "../assets/icon-shopping-cart.svg";
 import UserInfo from "../assets/icon-user.svg";
 import { useNavigate } from "react-router-dom";
 
+const StyledHeaderWrapper = styled.div`
+  width: 100%;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+`;
+
 const StyledHeaderNav = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 22px 320px;
   box-sizing: border-box;
+  margin: 0 auto;
   height: 90px;
   align-items: center;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
@@ -51,29 +57,31 @@ const HeaderNav = ({ user }) => {
   console.log(user);
 
   return (
-    <StyledHeaderNav className="navbar">
-      <StyledNavbarLeft className="navbar-left">
-        <StyledNavImg onClick={goMain} src={Logo} alt="logo" />
-        <SearchBar />
-      </StyledNavbarLeft>
-      <StyledNavbarRight className="navbar-right">
-        <StyledCartBtn>
-          <StyledNavImg onClick={goAddCart} src={Cart} alt="logo" />
-          <div>장바구니</div>
-        </StyledCartBtn>
-        {user === null || user === undefined ? (
+    <StyledHeaderWrapper>
+      <StyledHeaderNav className="navbar">
+        <StyledNavbarLeft className="navbar-left">
+          <StyledNavImg onClick={goMain} src={Logo} alt="logo" />
+          <SearchBar />
+        </StyledNavbarLeft>
+        <StyledNavbarRight className="navbar-right">
           <StyledCartBtn>
-            <StyledNavImg onClick={goLogin} src={UserInfo} alt="logo" />
-            <div>로그인</div>
+            <StyledNavImg onClick={goAddCart} src={Cart} alt="logo" />
+            <div>장바구니</div>
           </StyledCartBtn>
-        ) : (
-          <StyledCartBtn>
-            <StyledNavImg src={UserInfo} alt="logo" />
-            <div>마이페이지</div>
-          </StyledCartBtn>
-        )}
-      </StyledNavbarRight>
-    </StyledHeaderNav>
+          {user === null || user === undefined ? (
+            <StyledCartBtn>
+              <StyledNavImg onClick={goLogin} src={UserInfo} alt="logo" />
+              <div>로그인</div>
+            </StyledCartBtn>
+          ) : (
+            <StyledCartBtn>
+              <StyledNavImg src={UserInfo} alt="logo" />
+              <div>마이페이지</div>
+            </StyledCartBtn>
+          )}
+        </StyledNavbarRight>
+      </StyledHeaderNav>
+    </StyledHeaderWrapper>
   );
 };
 

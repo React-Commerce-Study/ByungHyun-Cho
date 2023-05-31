@@ -3,28 +3,23 @@ import useLoginProcess from "../Process/useLoginProcess";
 
 const LoginComponets = ({ setReRender }) => {
   const [toggle, setToggle] = useState(true);
+
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
     login_type: "",
   });
-  console.log(userInput);
 
-  const fetchLogin = useLoginProcess({ userInput });
-  console.log(userInput);
+  const fetchLogin = useLoginProcess();
+
   function loginCheckfunc(type) {
     const loginType = type === "buyer" ? "BUYER" : "SELLER";
     setUserInput({
       ...userInput,
       login_type: loginType,
     });
-    console.log(userInput);
     fetchLogin(userInput, loginType);
-
-    // setUserCheck(true);
   }
-
-  // setReRender(userCheck);
 
   return (
     <>

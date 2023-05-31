@@ -60,6 +60,7 @@ const StyledProductInfoImgContainer = styled.div`
   /* margin-left: 50px; */
 `;
 const StyledProductInfoOrderContainer = styled.div`
+  flex-grow: 1;
   margin-left: 50px;
   display: flex;
   flex-direction: column;
@@ -81,8 +82,9 @@ const PriceContainer = styled.div`
   margin-bottom: 100px;
 `;
 const ProductInfoImg = styled.img`
-  width: 600px;
-  height: 600px;
+  max-width: 600px;
+  max-height: 600px;
+  flex-grow: 1;
 `;
 const ProcudctInfoItems = styled.div`
   border-top: 1px solid #c4c4c4;

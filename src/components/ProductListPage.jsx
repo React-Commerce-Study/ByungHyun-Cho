@@ -2,23 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
-const ProductListPage = ({ setPageSet, productPage, pageParams }) => {
-  const [clickedIndex, setClickedIndex] = useState(0);
-  const navigate = useNavigate();
+const ProductListPage = ({ productPage }) => {
   const location = useLocation();
-  function ProductNav(num, index) {
-    setPageSet(num.item);
-    setClickedIndex(index);
-    navigate(`/product/${num.item}`);
-  }
-  function ProductUrlNav(index) {
-    console.log(index.productId);
-    console.log(clickedIndex);
-    setClickedIndex(index.productId);
-  }
-  useEffect(() => {
-    ProductUrlNav(pageParams);
-  }, [pageParams]);
 
   // function goBackToProductList() {
   //   setPageSet(1);
@@ -30,15 +15,12 @@ const ProductListPage = ({ setPageSet, productPage, pageParams }) => {
     <ProductPageNav>
       {/* <Link onClick={goBackToProductList}>Back to First Product List</Link> */}
       {productPage.map((item, index) => {
-        console.log(item);
-
         return (
           <Link
             to={`/product/${item}`}
             className={
               location.pathname === `/product/${item}` ? "toggleActive" : ""
             }
-            onClick={() => ProductNav({ item }, index)}
             key={item}
           >
             {item}
