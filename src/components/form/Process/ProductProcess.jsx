@@ -6,32 +6,44 @@ const ProductProcess = () => {
   const basicURL = "https://openmarket.weniv.co.kr/products/";
   const [productList, setProductList] = useState([]);
   const [fetchPage, setFetchPage] = useState(basicURL);
-  const [pageSet, setPageSet] = useState(1);
+  // const [pageSet, setPageSet] = useState(1);
   const [productPage, setProductPage] = useState([]);
+  const [init, setInit] = useState(false);
   const dataResultsLength = 15;
   let productPageNum = 0;
+
   let pageParams = useParams();
 
   function pageSetChange(page) {
+    console.log(page);
     const newFetchPage =
-      page === 1 ? basicURL : `${basicURL}?page=${pageParams.productId}`;
+      page === (1 || undefined || null)
+        ? basicURL
+        : `${basicURL}?page=${pageParams.productId}`;
     setFetchPage(newFetchPage);
-    setPageSet(page);
     window.scrollTo(0, 0);
+    console.log(fetchPage);
   }
 
   useEffect(() => {
-    fetchProducts();
-  }, [fetchPage]);
+    if (pageParams.productId === undefined || pageParams.productId === null) {
+      pageSetChange(1);
+    } else {
+      pageSetChange(pageParams.productId);
+    }
+  }, [pageParams]);
 
   useEffect(() => {
-    pageSetChange(pageSet);
-  }, [pageParams]);
+    if (!init) {
+      fetchProducts();
+    } else {
+      setInit(true);
+    }
+  }, [fetchPage]);
 
   async function fetchProducts() {
     try {
       console.log(fetchPage);
-
       const response = await fetch(fetchPage);
       if (!response.ok) {
         throw new Error("네트워크에 문제가 있습니다.");
@@ -63,11 +75,7 @@ const ProductProcess = () => {
   return (
     <>
       <ProductList productList={productList} />
-      <ProductListPage
-        pageParams={pageParams}
-        setPageSet={setPageSet}
-        productPage={productPage}
-      />
+      <ProductListPage pageParams={pageParams} productPage={productPage} />
     </>
   );
 };
