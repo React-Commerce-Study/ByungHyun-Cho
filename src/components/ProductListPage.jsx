@@ -5,15 +5,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 const ProductListPage = ({ productPage }) => {
   const location = useLocation();
 
-  // function goBackToProductList() {
-  //   setPageSet(1);
-  //   setClickedIndex(0);
-  //   navigate("/product/1"); // Adjust the route based on your actual first product list route
-  // }
-
   return (
     <ProductPageNav>
-      {/* <Link onClick={goBackToProductList}>Back to First Product List</Link> */}
       {productPage.map((item, index) => {
         return (
           <Link
@@ -32,6 +25,7 @@ const ProductListPage = ({ productPage }) => {
 };
 
 export default ProductListPage;
+
 const ProductPageNav = styled.div`
   display: flex;
   align-items: center;
@@ -44,7 +38,6 @@ const ProductPageNav = styled.div`
     display: flex;
     cursor: pointer;
     text-align: center;
-    /* font-size: 14px; */
   }
   .toggleActive {
     font-weight: bold;

@@ -9,12 +9,14 @@ const StyledImageContainer = styled.ul`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 0;
-  margin-top: 80px;
   gap: 70px;
   width: 100%;
-  margin: 80px 80px;
+  margin: 0 auto;
+  margin-top: 80px;
+  max-width: 1280px;
 `;
 
 export default function ImageList({ productList }) {

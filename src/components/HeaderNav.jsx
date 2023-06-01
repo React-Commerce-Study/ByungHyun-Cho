@@ -8,40 +8,6 @@ import Cart from "../assets/icon-shopping-cart.svg";
 import UserInfo from "../assets/icon-user.svg";
 import { useNavigate } from "react-router-dom";
 
-const StyledHeaderWrapper = styled.div`
-  width: 100%;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
-`;
-
-const StyledHeaderNav = styled.header`
-  display: flex;
-  justify-content: space-between;
-  padding: 22px 320px;
-  box-sizing: border-box;
-  margin: 0 auto;
-  height: 90px;
-  align-items: center;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
-`;
-const StyledNavbarLeft = styled.div`
-  display: flex;
-  gap: 15px;
-`;
-const StyledNavbarRight = styled.div`
-  display: flex;
-  gap: 15px;
-`;
-const StyledCartBtn = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-  color: #767676;
-`;
-const StyledNavImg = styled.img`
-  cursor: pointer;
-`;
-
 const HeaderNav = ({ user }) => {
   const navigate = useNavigate();
   function goMain() {
@@ -86,3 +52,35 @@ const HeaderNav = ({ user }) => {
 };
 
 export default HeaderNav;
+const StyledHeaderWrapper = styled.div`
+  width: 100%;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+`;
+
+const StyledHeaderNav = styled.header`
+  /* margin: 0 320px; */
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 26px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const StyledNavbarLeft = styled.div`
+  display: flex;
+  gap: 15px;
+`;
+const StyledNavbarRight = styled.div`
+  display: flex;
+  gap: 15px;
+`;
+const StyledCartBtn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #767676;
+`;
+const StyledNavImg = styled.img`
+  cursor: pointer;
+`;

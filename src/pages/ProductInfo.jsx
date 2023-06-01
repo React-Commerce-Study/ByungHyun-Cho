@@ -53,11 +53,15 @@ export default ProductInfo;
 const StyledProductInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 80px 320px;
+  margin: 80px auto;
+  /* max-width: 1280px; */
 `;
 const StyledProductInfoImgContainer = styled.div`
   display: flex;
   /* margin-left: 50px; */
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
 `;
 const StyledProductInfoOrderContainer = styled.div`
   flex-grow: 1;
@@ -66,6 +70,8 @@ const StyledProductInfoOrderContainer = styled.div`
   flex-direction: column;
   gap: 15px;
   height: 600px;
+  max-width: 1280px;
+  width: 100%;
 `;
 const StyledProductInfoTitle = styled.div`
   font-size: 36px;
@@ -82,9 +88,10 @@ const PriceContainer = styled.div`
   margin-bottom: 100px;
 `;
 const ProductInfoImg = styled.img`
+  width: 100%;
+  height: 100%;
   max-width: 600px;
   max-height: 600px;
-  flex-grow: 1;
 `;
 const ProcudctInfoItems = styled.div`
   border-top: 1px solid #c4c4c4;
@@ -103,7 +110,8 @@ const ProductInfoPriceDiv = styled.div`
 `;
 const ProductInfoBtn = styled.div`
   display: flex;
-  min-width: 670px;
+  max-width: 670px;
+  width: 100%;
   height: 60px;
   gap: 14px;
 `;
