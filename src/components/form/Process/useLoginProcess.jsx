@@ -8,6 +8,7 @@ const useLoginProcess = () => {
 
   async function fetchLogin(userInput, loginType) {
     try {
+      console.log(userInput);
       const response = await fetch(
         `https://openmarket.weniv.co.kr/accounts/login/`,
         {
@@ -23,7 +24,7 @@ const useLoginProcess = () => {
         alert("아이디 비밀번호를 확인해주세요!");
       } else {
         setloginCheck(true);
-        navigate("/", { state: { loginCheck } });
+        navigate("/", { state: { loginType } });
       }
     } catch (error) {
       console.error("데이터를 가져오는데 문제가 생겼습니다.", error);

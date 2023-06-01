@@ -94,6 +94,12 @@ const LoginComponets = ({ setReRender }) => {
                 id="buy-user_login"
                 autoComplete="off"
                 placeholder="아이디"
+                onChange={(e) => {
+                  setUserInput({
+                    ...userInput,
+                    username: e.target.value,
+                  });
+                }}
               />
               <input
                 type="password"
@@ -101,8 +107,19 @@ const LoginComponets = ({ setReRender }) => {
                 id="buy-user_pass"
                 autoComplete="off"
                 placeholder="비밀번호"
+                onChange={(e) => {
+                  setUserInput({
+                    ...userInput,
+                    password: e.target.value,
+                  });
+                }}
               />
-              <input type="submit" className="button" value="판매 로그인" />
+              <input
+                type="button"
+                className="button"
+                value="판매 로그인"
+                onClick={() => loginCheckfunc("seller")}
+              />
             </form>
           </div>
         </div>

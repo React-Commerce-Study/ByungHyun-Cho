@@ -7,6 +7,7 @@ import Logo from "../assets/Logo-hodu.svg";
 import Cart from "../assets/icon-shopping-cart.svg";
 import UserInfo from "../assets/icon-user.svg";
 import { useNavigate } from "react-router-dom";
+import ShoppingBag from "../assets/icon-shopping-bag.svg";
 
 const HeaderNav = ({ user }) => {
   const navigate = useNavigate();
@@ -30,15 +31,28 @@ const HeaderNav = ({ user }) => {
           <SearchBar />
         </StyledNavbarLeft>
         <StyledNavbarRight className="navbar-right">
-          <StyledCartBtn>
-            <StyledNavImg onClick={goAddCart} src={Cart} alt="logo" />
-            <div>장바구니</div>
-          </StyledCartBtn>
+          {user === null || user === undefined ? (
+            <StyledCartBtn>
+              <StyledNavImg onClick={goAddCart} src={Cart} alt="logo" />
+              <div>장바구니</div>
+            </StyledCartBtn>
+          ) : (
+            <StyledCartBtn>
+              <StyledNavImg src={UserInfo} alt="logo" />
+              <div>마이페이지</div>
+            </StyledCartBtn>
+          )}
+
           {user === null || user === undefined ? (
             <StyledCartBtn>
               <StyledNavImg onClick={goLogin} src={UserInfo} alt="logo" />
               <div>로그인</div>
             </StyledCartBtn>
+          ) : user.loginType === "SELLER" ? (
+            <SSellerBtn>
+              <SSellerImg src={ShoppingBag} alt="logo" />
+              <div>판매자 센터</div>
+            </SSellerBtn>
           ) : (
             <StyledCartBtn>
               <StyledNavImg src={UserInfo} alt="logo" />
@@ -83,4 +97,18 @@ const StyledCartBtn = styled.div`
 `;
 const StyledNavImg = styled.img`
   cursor: pointer;
+`;
+const SSellerImg = styled.img`
+  color: black;
+`;
+const SSellerBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #21bf48;
+  min-width: 168px;
+  border-radius: 5px;
+  font-size: 18px;
+  gap: 5px;
 `;
