@@ -55,7 +55,7 @@ const LoginComponets = ({ setReRender }) => {
                 type="text"
                 className="input"
                 id="sell-user-login"
-                autoComplete="off"
+                autoComplete="on"
                 placeholder="아이디"
                 onChange={(e) => {
                   setUserInput({
@@ -68,7 +68,7 @@ const LoginComponets = ({ setReRender }) => {
                 type="password"
                 className="input"
                 id="sell-user-pass"
-                autoComplete="off"
+                autoComplete="on"
                 placeholder="비밀번호"
                 onChange={(e) => {
                   setUserInput({
