@@ -52,8 +52,8 @@ const ProductInfo = () => {
         <ProductInfoReview>
           <div>정보</div>
           <div>리뷰</div>
-          <div>q&a</div>
-          <div>반품</div>
+          <div>Q&A</div>
+          <div>반품/교환정보</div>
         </ProductInfoReview>
       </StyledProductInfoContainer>
     </>
@@ -106,8 +106,8 @@ const ProductInfoImg = styled.img`
   max-height: 600px;
 `;
 const ProcudctInfoItems = styled.div`
-  border-top: 1px solid #c4c4c4;
-  border-bottom: 1px solid #c4c4c4;
+  border-top: 2px solid #c4c4c4;
+  border-bottom: 2px solid #c4c4c4;
   padding: 30px 0px;
   div {
     display: flex;
@@ -174,12 +174,15 @@ const ProductInfoReview = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 140px;
+
   div {
+    font-size: 18px;
+    color: #767676;
     width: 100%;
     max-width: 320px;
     max-height: 60px;
     text-align: center;
-    border-bottom: 6px solid #c4c4c4;
+    border-bottom: 6px solid #e0e0e0;
     padding: 15px 0px;
     cursor: pointer;
   }

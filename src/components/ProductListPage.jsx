@@ -31,9 +31,10 @@ const ProductPageNav = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin: 40px 0;
+  margin: 20px;
+  padding-top: 10px;
   border-top: 1px solid #121213;
-  border-bottom: 1px solid #121213;
+  /* border-bottom: 1px solid #121213; */
   a {
     display: flex;
     cursor: pointer;
