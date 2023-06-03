@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import HeaderNav from "../components/HeaderNav";
@@ -7,6 +7,7 @@ import Minus from "../assets/icon-minus-line.svg";
 const ProductInfo = () => {
   const location = useLocation();
   const productInfo = location.state;
+  const [toggle, setToggle] = useState(0);
 
   return (
     <>
@@ -50,10 +51,38 @@ const ProductInfo = () => {
           </StyledProductInfoOrderContainer>
         </StyledProductInfoImgContainer>
         <ProductInfoReview>
-          <div>정보</div>
-          <div>리뷰</div>
-          <div>Q&A</div>
-          <div>반품/교환정보</div>
+          <div
+            className={toggle === 0 ? "active" : ""}
+            onClick={() => {
+              setToggle(0);
+            }}
+          >
+            정보
+          </div>
+          <div
+            className={toggle === 1 ? "active" : ""}
+            onClick={() => {
+              setToggle(1);
+            }}
+          >
+            리뷰
+          </div>
+          <div
+            className={toggle === 2 ? "active" : ""}
+            onClick={() => {
+              setToggle(2);
+            }}
+          >
+            Q&A
+          </div>
+          <div
+            className={toggle === 3 ? "active" : ""}
+            onClick={() => {
+              setToggle(3);
+            }}
+          >
+            반품/교환정보
+          </div>
         </ProductInfoReview>
       </StyledProductInfoContainer>
     </>
@@ -187,6 +216,9 @@ const ProductInfoReview = styled.div`
     cursor: pointer;
   }
   div:hover {
+    border-bottom: 6px solid #21bf48;
+  }
+  div.active {
     border-bottom: 6px solid #21bf48;
   }
 `;
