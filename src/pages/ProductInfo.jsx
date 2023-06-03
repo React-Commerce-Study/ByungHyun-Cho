@@ -23,6 +23,9 @@ const ProductInfo = () => {
     if (type === "plus") {
       setProductItemNum(productItemNum + 1);
     } else {
+      if (productItemNum === 1) {
+        return;
+      }
       setProductItemNum(productItemNum - 1);
     }
   }
@@ -40,7 +43,7 @@ const ProductInfo = () => {
         <StyledProductInfoImgContainer>
           <ProductInfoImg src={productInfo.img} alt="img"></ProductInfoImg>
           <StyledProductInfoOrderContainer>
-            <div>{productInfo.store}</div>
+            <SGreenFont>{productInfo.store}</SGreenFont>
             <StyledProductInfoTitle>{productInfo.title}</StyledProductInfoTitle>
             <PriceContainer>
               <Price>{productInfo.price}</Price>
@@ -69,9 +72,12 @@ const ProductInfo = () => {
             <ProductInfoPriceDiv>
               <div>총 상품 금액</div>
               <ProductInfoPrice>
-                <div>총 수량 {productItemNum}개 |</div>
+                <ProductInfoPrice>
+                  총 수량
+                  <SGreenFont>{productItemNum}</SGreenFont>개 |
+                </ProductInfoPrice>
                 <ProductInfoTotalPrice>
-                  {productTotalPrice}
+                  <STotalPrice>{productTotalPrice}</STotalPrice>
                   <div>원</div>
                 </ProductInfoTotalPrice>
               </ProductInfoPrice>
@@ -128,6 +134,15 @@ const StyledProductInfoContainer = styled.div`
   flex-direction: column;
   margin: 80px auto;
   /* max-width: 1280px; */
+`;
+const SGreenFont = styled.div`
+  color: #21bf48;
+  font-weight: bold;
+`;
+const STotalPrice = styled.div`
+  color: #21bf48;
+  font-size: 36px;
+  font-weight: bold;
 `;
 const StyledProductInfoImgContainer = styled.div`
   display: flex;
@@ -225,7 +240,8 @@ const ProductBtnCart = styled.button`
 const ProductInfoTotalPrice = styled.div`
   font-size: 36px;
   display: flex;
-  div {
+
+  div:nth-child(2) {
     font-size: 18px;
     align-items: end;
     display: flex;

@@ -10,7 +10,7 @@ const AddCart = () => {
       <HeaderNav />
       <div>
         <div>장바구니</div>
-        <img src={location.state.img} alt="" />
+        <img src={location.state.img} alt="상품이미지" />
         <div>{location.state.store}</div>
         <div>{location.state.title}</div>
         <div>{location.state.price}</div>

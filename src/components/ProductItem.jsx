@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function ProductItem({ img, title, store, price, product_id }) {
   const navigate = useNavigate();
-
+  console.log(img, title, store, price, product_id);
   function goProductInfo() {
     navigate("/ProductInfo", {
       state: { img, title, store, price, product_id },
