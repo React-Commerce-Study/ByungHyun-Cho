@@ -8,6 +8,7 @@ const ProductInfo = () => {
   const location = useLocation();
   const productInfo = location.state;
   const [toggle, setToggle] = useState(0);
+  const navigate = useNavigate();
 
   const [productItemNum, setProductItemNum] = useState(1);
   function uncomma(str) {
@@ -24,6 +25,12 @@ const ProductInfo = () => {
     } else {
       setProductItemNum(productItemNum - 1);
     }
+  }
+  function goOrderPage() {
+    navigate("/OrderPay");
+  }
+  function goAddCart() {
+    navigate("/AddCart", { state: productInfo });
   }
 
   return (
@@ -70,8 +77,8 @@ const ProductInfo = () => {
               </ProductInfoPrice>
             </ProductInfoPriceDiv>
             <ProductInfoBtn>
-              <ProductBtnBuy>바로구매</ProductBtnBuy>
-              <ProductBtnCart>장바구니</ProductBtnCart>
+              <ProductBtnBuy onClick={goOrderPage}>바로구매</ProductBtnBuy>
+              <ProductBtnCart onClick={goAddCart}>장바구니</ProductBtnCart>
             </ProductInfoBtn>
           </StyledProductInfoOrderContainer>
         </StyledProductInfoImgContainer>
