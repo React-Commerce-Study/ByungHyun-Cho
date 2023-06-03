@@ -9,6 +9,23 @@ const ProductInfo = () => {
   const productInfo = location.state;
   const [toggle, setToggle] = useState(0);
 
+  const [productItemNum, setProductItemNum] = useState(1);
+  function uncomma(str) {
+    return str.replace(/[^\d-/*.+x÷]+/g, "");
+  }
+
+  const productTotalPrice = (
+    uncomma(productInfo.price) * productItemNum
+  ).toLocaleString();
+
+  function productItemNumHandler(type) {
+    if (type === "plus") {
+      setProductItemNum(productItemNum + 1);
+    } else {
+      setProductItemNum(productItemNum - 1);
+    }
+  }
+
   return (
     <>
       <HeaderNav />
@@ -25,11 +42,19 @@ const ProductInfo = () => {
             <div>택배배송 / 무료배송</div>
             <ProcudctInfoItems>
               <div>
-                <div>
+                <div
+                  onClick={() => {
+                    productItemNumHandler("minus");
+                  }}
+                >
                   <img src={Minus} alt="minus" />
                 </div>
-                <div>1</div>
-                <div>
+                <div>{productItemNum}</div>
+                <div
+                  onClick={() => {
+                    productItemNumHandler("plus");
+                  }}
+                >
                   <img src={Plus} alt="plus" />
                 </div>
               </div>
@@ -37,9 +62,9 @@ const ProductInfo = () => {
             <ProductInfoPriceDiv>
               <div>총 상품 금액</div>
               <ProductInfoPrice>
-                <div>총 수량 1개 |</div>
+                <div>총 수량 {productItemNum}개 |</div>
                 <ProductInfoTotalPrice>
-                  {productInfo.price}
+                  {productTotalPrice}
                   <div>원</div>
                 </ProductInfoTotalPrice>
               </ProductInfoPrice>
