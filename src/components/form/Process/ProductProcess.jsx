@@ -6,7 +6,6 @@ const ProductProcess = () => {
   const basicURL = "https://openmarket.weniv.co.kr/products/";
   const [productList, setProductList] = useState([]);
   const [fetchPage, setFetchPage] = useState(basicURL);
-  // const [pageSet, setPageSet] = useState(1);
   const [productPage, setProductPage] = useState([]);
   const [init, setInit] = useState(false);
   const dataResultsLength = 15;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import HeaderNav from "../components/HeaderNav";
@@ -18,6 +18,9 @@ const ProductInfo = () => {
   const productTotalPrice = (
     uncomma(productInfo.price) * productItemNum
   ).toLocaleString();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   function productItemNumHandler(type) {
     if (type === "plus") {
@@ -220,6 +223,9 @@ const ProductInfoBtn = styled.div`
   width: 100%;
   height: 60px;
   gap: 14px;
+  button {
+    cursor: pointer;
+  }
 `;
 const ProductBtnBuy = styled.button`
   flex-grow: 2;

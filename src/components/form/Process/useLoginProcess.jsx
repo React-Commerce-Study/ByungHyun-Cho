@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ProductList from "../../../pages/ProductList";
 
 const useLoginProcess = () => {
-  const [loginCheck, setloginCheck] = useState(false);
   const navigate = useNavigate();
 
   async function fetchLogin(userInput, loginType) {
@@ -23,7 +20,6 @@ const useLoginProcess = () => {
       if (!response.ok) {
         alert("아이디 비밀번호를 확인해주세요!");
       } else {
-        setloginCheck(true);
         navigate("/", { state: { loginType } });
       }
     } catch (error) {
