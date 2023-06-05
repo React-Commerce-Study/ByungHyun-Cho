@@ -2,12 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-export default function ProductItem({ img, title, store, price, product_id }) {
+export default function ProductItem({
+  img,
+  title,
+  store,
+  price,
+  product_id,
+  shipping_fee,
+}) {
   const navigate = useNavigate();
-  console.log(img, title, store, price, product_id);
   function goProductInfo() {
     navigate("/ProductInfo", {
-      state: { img, title, store, price, product_id },
+      state: { img, title, store, price, product_id, shipping_fee },
     });
   }
   return (

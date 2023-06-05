@@ -14,14 +14,12 @@ const ProductProcess = () => {
   let pageParams = useParams();
 
   function pageSetChange(page) {
-    console.log(page);
     const newFetchPage =
       page === (1 || undefined || null)
         ? basicURL
         : `${basicURL}?page=${pageParams.productId}`;
     setFetchPage(newFetchPage);
     window.scrollTo(0, 0);
-    console.log(fetchPage);
   }
 
   useEffect(() => {
@@ -42,7 +40,6 @@ const ProductProcess = () => {
 
   async function fetchProducts() {
     try {
-      console.log(fetchPage);
       const response = await fetch(fetchPage);
       if (!response.ok) {
         throw new Error("네트워크에 문제가 있습니다.");
@@ -69,7 +66,6 @@ const ProductProcess = () => {
       pages.push(i);
     }
     setProductPage(pages);
-    console.log(pageParams.productId);
   }
   return (
     <>

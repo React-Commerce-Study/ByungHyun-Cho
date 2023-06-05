@@ -14,6 +14,7 @@ export default function ImageList({ productList }) {
               store={item.store_name}
               price={item.price.toLocaleString()}
               product_id={item.product_id}
+              shipping_fee={item.shipping_fee}
             />
           </StyledImageList>
         );
@@ -21,6 +22,7 @@ export default function ImageList({ productList }) {
     </StyledImageContainer>
   );
 }
+
 const StyledImageList = styled.li`
   list-style: none;
 `;

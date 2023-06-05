@@ -6,15 +6,17 @@ import Plus from "../assets/icon-plus-line.svg";
 import Minus from "../assets/icon-minus-line.svg";
 const ProductInfo = () => {
   const location = useLocation();
+
   const productInfo = location.state;
+
   const [toggle, setToggle] = useState(0);
+
   const navigate = useNavigate();
 
   const [productItemNum, setProductItemNum] = useState(1);
   function uncomma(str) {
     return str.replace(/[^\d-/*.+x÷]+/g, "");
   }
-
   const productTotalPrice = (
     uncomma(productInfo.price) * productItemNum
   ).toLocaleString();
@@ -52,7 +54,14 @@ const ProductInfo = () => {
               <Price>{productInfo.price}</Price>
               <div>원</div>
             </PriceContainer>
-            <div>택배배송 / 무료배송</div>
+            <div>
+              택배배송 /
+              {productInfo.shipping_fee !== 0 ? (
+                <div>{productInfo.shipping_fee.toLocaleString()}원</div>
+              ) : (
+                <div>무료배송</div>
+              )}
+            </div>
             <ProcudctInfoItems>
               <div>
                 <div
