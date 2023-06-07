@@ -9,11 +9,12 @@ export default function ProductItem({
   price,
   product_id,
   shipping_fee,
+  stock,
 }) {
   const navigate = useNavigate();
   function goProductInfo() {
     navigate("/ProductInfo", {
-      state: { img, title, store, price, product_id, shipping_fee },
+      state: { img, title, store, price, product_id, shipping_fee, stock },
     });
   }
   return (

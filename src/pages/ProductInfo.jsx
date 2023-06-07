@@ -4,6 +4,7 @@ import styled from "styled-components";
 import HeaderNav from "../components/HeaderNav";
 import Plus from "../assets/icon-plus-line.svg";
 import Minus from "../assets/icon-minus-line.svg";
+import ItemAddButton from "../components/ItemAddButton";
 const ProductInfo = () => {
   const location = useLocation();
 
@@ -14,6 +15,7 @@ const ProductInfo = () => {
   const navigate = useNavigate();
 
   const [productItemNum, setProductItemNum] = useState(1);
+
   function uncomma(str) {
     return str.replace(/[^\d-/*.+x÷]+/g, "");
   }
@@ -24,22 +26,13 @@ const ProductInfo = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  function productItemNumHandler(type) {
-    if (type === "plus") {
-      setProductItemNum(productItemNum + 1);
-    } else {
-      if (productItemNum === 1) {
-        return;
-      }
-      setProductItemNum(productItemNum - 1);
-    }
-  }
   function goOrderPage() {
     navigate("/OrderPay");
   }
   function goAddCart() {
     navigate("/AddCart", { state: productInfo });
   }
+  console.log(productInfo.stock);
 
   return (
     <>
@@ -54,33 +47,19 @@ const ProductInfo = () => {
               <Price>{productInfo.price}</Price>
               <div>원</div>
             </PriceContainer>
-            <div>
+            <SShippingFee>
               택배배송 /
               {productInfo.shipping_fee !== 0 ? (
                 <div>{productInfo.shipping_fee.toLocaleString()}원</div>
               ) : (
                 <div>무료배송</div>
               )}
-            </div>
-            <ProcudctInfoItems>
-              <div>
-                <div
-                  onClick={() => {
-                    productItemNumHandler("minus");
-                  }}
-                >
-                  <img src={Minus} alt="minus" />
-                </div>
-                <div>{productItemNum}</div>
-                <div
-                  onClick={() => {
-                    productItemNumHandler("plus");
-                  }}
-                >
-                  <img src={Plus} alt="plus" />
-                </div>
-              </div>
-            </ProcudctInfoItems>
+            </SShippingFee>
+            <ItemAddButton
+              productItemNum={productItemNum}
+              setProductItemNum={setProductItemNum}
+              productInfo={productInfo}
+            />
             <ProductInfoPriceDiv>
               <div>총 상품 금액</div>
               <ProductInfoPrice>
@@ -146,6 +125,9 @@ const StyledProductInfoContainer = styled.div`
   flex-direction: column;
   margin: 80px auto;
   /* max-width: 1280px; */
+`;
+const SShippingFee = styled.div`
+  display: flex;
 `;
 const SGreenFont = styled.div`
   color: #21bf48;

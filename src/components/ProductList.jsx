@@ -15,6 +15,7 @@ export default function ImageList({ productList }) {
               price={item.price.toLocaleString()}
               product_id={item.product_id}
               shipping_fee={item.shipping_fee}
+              stock={item.stock}
             />
           </StyledImageList>
         );
