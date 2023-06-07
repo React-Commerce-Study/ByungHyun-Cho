@@ -32,7 +32,6 @@ const ProductInfo = () => {
   function goAddCart() {
     navigate("/AddCart", { state: productInfo });
   }
-  console.log(productInfo.stock);
 
   return (
     <>
@@ -174,26 +173,6 @@ const ProductInfoImg = styled.img`
   height: 100%;
   max-width: 600px;
   max-height: 600px;
-`;
-const ProcudctInfoItems = styled.div`
-  border-top: 2px solid #c4c4c4;
-  border-bottom: 2px solid #c4c4c4;
-  padding: 30px 0px;
-  div {
-    display: flex;
-    div {
-      border: 1px solid #c4c4c4;
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
-      align-items: center;
-      justify-content: center;
-    }
-    div:nth-child(1),
-    div:nth-child(3) {
-      cursor: pointer;
-    }
-  }
 `;
 const ProductInfoPrice = styled.div`
   display: flex;
