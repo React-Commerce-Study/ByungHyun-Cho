@@ -17,7 +17,7 @@ const ProductInfo = () => {
   const [productItemNum, setProductItemNum] = useState(1);
 
   function uncomma(str) {
-    return str.replace(/[^\d-/*.+x÷]+/g, "");
+    return str.replace(/[^\d-/]+/g, "");
   }
   const productTotalPrice = (
     uncomma(productInfo.price) * productItemNum
