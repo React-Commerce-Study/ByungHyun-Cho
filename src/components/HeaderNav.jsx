@@ -1,15 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
-import AddCart from "../pages/AddCart";
-import Login from "../pages/Login";
 import Logo from "../assets/Logo-hodu.svg";
 import Cart from "../assets/icon-shopping-cart.svg";
 import UserInfo from "../assets/icon-user.svg";
 import { useNavigate } from "react-router-dom";
 import ShoppingBag from "../assets/icon-shopping-bag.svg";
+import { useSelector } from "react-redux";
+import DropDown from "./DropDown";
 
-const HeaderNav = ({ user }) => {
+const HeaderNav = () => {
+  const token = useSelector((state) => state.Auth.token);
+  const logintype = useSelector((state) => state.Auth.loginType);
+
+  console.log(token);
+  console.log(logintype);
   const navigate = useNavigate();
   function goMain() {
     navigate("/product/1");
@@ -17,7 +22,6 @@ const HeaderNav = ({ user }) => {
   function goAddCart() {
     navigate("/addcart");
   }
-
   function goLogin() {
     navigate("/login");
   }
@@ -30,7 +34,11 @@ const HeaderNav = ({ user }) => {
           <SearchBar />
         </StyledNavbarLeft>
         <StyledNavbarRight className="navbar-right">
-          {user === null || user === undefined || user.loginType === "BUYER" ? (
+          {token === null ||
+          logintype === null ||
+          token === "" ||
+          logintype === "" ||
+          logintype === "BUYER" ? (
             <StyledCartBtn>
               <StyledNavImg onClick={goAddCart} src={Cart} alt="logo" />
               <div>장바구니</div>
@@ -42,12 +50,12 @@ const HeaderNav = ({ user }) => {
             </StyledCartBtn>
           )}
 
-          {user === null || user === undefined ? (
+          {logintype === null || logintype === undefined || logintype === "" ? (
             <StyledCartBtn>
               <StyledNavImg onClick={goLogin} src={UserInfo} alt="logo" />
               <div>로그인</div>
             </StyledCartBtn>
-          ) : user.loginType === "SELLER" ? (
+          ) : token !== null && logintype === "SELLER" ? (
             <SSellerBtn>
               <SSellerImg src={ShoppingBag} alt="logo" />
               <div>판매자 센터</div>
@@ -55,7 +63,7 @@ const HeaderNav = ({ user }) => {
           ) : (
             <StyledCartBtn>
               <StyledNavImg src={UserInfo} alt="logo" />
-              <div>마이페이지</div>
+              <DropDown />
             </StyledCartBtn>
           )}
         </StyledNavbarRight>

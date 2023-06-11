@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { setToken } from "../../../module/redux/reducers/AuthReducer";
+import { setLoginType } from "../../../module/redux/reducers/AuthReducer";
 const useLoginProcess = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   async function fetchLogin(userInput, loginType) {
     try {
       console.log(userInput);
@@ -16,11 +18,14 @@ const useLoginProcess = () => {
           body: JSON.stringify({ ...userInput, login_type: loginType }),
         }
       );
-      console.log(response);
+      const responseData = await response.json();
       if (!response.ok) {
         alert("아이디 비밀번호를 확인해주세요!");
       } else {
-        navigate("/", { state: { loginType } });
+        const token = responseData.token;
+        dispatch(setToken(token));
+        dispatch(setLoginType(responseData.user_type));
+        navigate("/");
       }
     } catch (error) {
       console.error("데이터를 가져오는데 문제가 생겼습니다.", error);
