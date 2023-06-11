@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useLoginProcess from "../Process/useLoginProcess";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const LoginComponets = ({ setReRender }) => {
+const LoginComponets = () => {
   const [toggle, setToggle] = useState(true);
 
   const [userInput, setUserInput] = useState({
@@ -20,6 +22,14 @@ const LoginComponets = ({ setReRender }) => {
     });
     fetchLogin(userInput, loginType);
   }
+  const token = useSelector((state) => state.Auth.token);
+  const logintype = useSelector((state) => state.Auth.loginType);
+  const navigete = useNavigate();
+  useEffect(() => {
+    if (token && logintype !== "") {
+      navigete("/");
+    }
+  });
 
   return (
     <>
