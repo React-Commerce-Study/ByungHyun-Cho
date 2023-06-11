@@ -3,15 +3,8 @@ import styled from "styled-components";
 import Plus from "../assets/icon-plus-line.svg";
 import Minus from "../assets/icon-minus-line.svg";
 
-const ItemAddButton = ({ productItemNum, setProductItemNum, productInfo }) => {
-  console.log(productInfo.stock);
+const ItemAddButton = ({ productItemNum, setProductItemNum, stock }) => {
   function productItemNumHandler(type) {
-    if (productInfo.stock <= productItemNum) {
-      alert(
-        `재고가 부족합니다. 최대 구매가능수량은 ${productInfo.stock}개 입니다.`
-      );
-      return;
-    }
     if (type === "plus") {
       setProductItemNum(productItemNum + 1);
     } else {
@@ -19,11 +12,17 @@ const ItemAddButton = ({ productItemNum, setProductItemNum, productInfo }) => {
         return;
       }
       setProductItemNum(productItemNum - 1);
+      return;
+    }
+    if (stock <= productItemNum) {
+      alert(`재고가 부족합니다. 최대 구매가능수량은 ${stock}개 입니다.`);
+      setProductItemNum(productItemNum);
+      return;
     }
   }
   return (
     <>
-      {productInfo.stock === 0 ? (
+      {stock === 0 ? (
         <ProcudctInfoItems>현재 품절입니다.</ProcudctInfoItems>
       ) : (
         <ProcudctInfoItems>
@@ -35,7 +34,6 @@ const ItemAddButton = ({ productItemNum, setProductItemNum, productInfo }) => {
             >
               <img src={Minus} alt="minus" />
             </div>
-            {/* <div>1</div> */}
             <div>{productItemNum}</div>
             <div
               onClick={() => {
