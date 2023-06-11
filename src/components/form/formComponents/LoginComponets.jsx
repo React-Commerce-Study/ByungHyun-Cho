@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 const LoginComponets = () => {
   const [toggle, setToggle] = useState(true);
+
   const [loginCheckToggle, setLoginCheckToggle] = useState(true);
+
   const token = useSelector((state) => state.Auth.token);
+
   const logintype = useSelector((state) => state.Auth.loginType);
 
   const [userInput, setUserInput] = useState({
@@ -14,7 +17,9 @@ const LoginComponets = () => {
     password: "",
     login_type: "",
   });
+
   const fetchLogin = useLoginProcess();
+
   const navigete = useNavigate();
 
   function loginCheckfunc(type) {
@@ -30,7 +35,7 @@ const LoginComponets = () => {
     if (token && logintype !== "") {
       navigete("/");
     }
-  });
+  }, []);
 
   const handleOnKeyPress = (e) => {
     if (e.key === "Enter") {

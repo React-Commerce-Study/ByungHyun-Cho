@@ -1,5 +1,6 @@
 const SET_TOKEN = "set_token";
 const SET_LOGIN_TYPE = "set_login_type";
+
 const AuthInitialState = {
   token: null,
   loginType: null,

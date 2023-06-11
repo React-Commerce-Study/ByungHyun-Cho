@@ -13,8 +13,6 @@ const HeaderNav = () => {
   const token = useSelector((state) => state.Auth.token);
   const logintype = useSelector((state) => state.Auth.loginType);
 
-  console.log(token);
-  console.log(logintype);
   const navigate = useNavigate();
   function goMain() {
     navigate("/product/1");

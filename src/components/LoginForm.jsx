@@ -5,23 +5,8 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import LogoCompoent from "./common/LogoCompoent";
 
-const SignNav = styled.div`
-  display: flex;
-`;
-const Form = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const GoSignUp = styled.div`
-  cursor: pointer;
-`;
-
 const LoginForm = () => {
   const navigate = useNavigate();
-  function goMain() {
-    navigate("/");
-  }
   function goSignUp() {
     navigate("/SignUp");
   }
@@ -38,3 +23,14 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+const SignNav = styled.div`
+  display: flex;
+`;
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const GoSignUp = styled.div`
+  cursor: pointer;
+`;

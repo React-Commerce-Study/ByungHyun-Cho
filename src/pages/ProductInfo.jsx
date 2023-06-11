@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import HeaderNav from "../components/HeaderNav";
-import Plus from "../assets/icon-plus-line.svg";
-import Minus from "../assets/icon-minus-line.svg";
 import ItemAddButton from "../components/ItemAddButton";
+
 const ProductInfo = () => {
   const location = useLocation();
 
@@ -57,7 +56,7 @@ const ProductInfo = () => {
             <ItemAddButton
               productItemNum={productItemNum}
               setProductItemNum={setProductItemNum}
-              productInfo={productInfo}
+              stock={productInfo.stock}
             />
             <ProductInfoPriceDiv>
               <div>총 상품 금액</div>
