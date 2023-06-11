@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const ProductListPage = ({ productPage }) => {
   const location = useLocation();
-
+  console.log(location.pathname);
   return (
     <ProductPageNav>
       {productPage.map((item, index) => {
@@ -34,7 +34,6 @@ const ProductPageNav = styled.div`
   margin: 20px;
   padding-top: 10px;
   border-top: 1px solid #121213;
-  /* border-bottom: 1px solid #121213; */
   a {
     display: flex;
     cursor: pointer;

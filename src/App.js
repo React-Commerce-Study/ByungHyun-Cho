@@ -1,5 +1,11 @@
-import React, { useContext, createContext } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Router,
+  useLocation,
+} from "react-router-dom";
 import AddCart from "./pages//AddCart";
 import Login from "./pages//Login";
 import SignUp from "./pages//SignUp";
@@ -10,12 +16,17 @@ import { useSelector } from "react-redux";
 import "./App.css";
 
 function App() {
-  const token = useSelector((state) => state.Auth.token);
-  console.log(token);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (window.location.pathname === "/") {
+      window.location.href = "/product/1";
+    }
+  }, [location.pathname]);
   return (
     <div>
       <Routes>
-        <Route path={"/"} element={<ProductList />} />
+        {/* <Route path="/" element={<Navigate to="/product" replace />} /> */}
         <Route path={"/Login"} element={<Login />} />
         <Route path={"/SignUp"} element={<SignUp />} />
         <Route path={"/product/:productId"} element={<ProductList />} />
