@@ -2,10 +2,12 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import HeaderNav from "../components/HeaderNav";
 import styled from "styled-components";
+import ProductCartProcess from "../components/form/Process/ProductCartProcess";
+import CartItem from "../components/CartItem";
 const AddCart = () => {
   const location = useLocation();
   return (
-    <div>
+    <>
       <HeaderNav />
       <SCartLayout>
         <SCartTitle>장바구니</SCartTitle>
@@ -18,18 +20,10 @@ const AddCart = () => {
           <div>상품금액</div>
         </SCartTab>
         <SCartItemLayout>
-          <div>장바구니에 담긴 상품이 없습니다.</div>
-          <div>원하는 상품을 장바구니에 담아보세요!</div>
+          <ProductCartProcess />
         </SCartItemLayout>
       </SCartLayout>
-      {/* <div>
-        <div>장바구니</div>
-        <img src={location.state.img} alt="상품이미지" />
-        <div>{location.state.store}</div>
-        <div>{location.state.title}</div>
-        <div>{location.state.price}</div>
-      </div> */}
-    </div>
+    </>
   );
 };
 
@@ -97,9 +91,11 @@ const SCartItemLayout = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  div:nth-child(1) {
+  max-width: 1280px;
+  margin: 0 auto;
+  /* div:nth-child(1) {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 20px;
-  }
+  } */
 `;
