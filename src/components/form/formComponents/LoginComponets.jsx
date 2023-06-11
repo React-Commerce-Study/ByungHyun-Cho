@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import useLoginProcess from "../Process/useLoginProcess";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import styled from "styled-components";
 const LoginComponets = () => {
   const [toggle, setToggle] = useState(true);
+  const [loginCheckToggle, setLoginCheckToggle] = useState(true);
+  const token = useSelector((state) => state.Auth.token);
+  const logintype = useSelector((state) => state.Auth.loginType);
 
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
     login_type: "",
   });
-
   const fetchLogin = useLoginProcess();
+  const navigete = useNavigate();
 
   function loginCheckfunc(type) {
     const loginType = type === "buyer" ? "BUYER" : "SELLER";
@@ -20,11 +23,9 @@ const LoginComponets = () => {
       ...userInput,
       login_type: loginType,
     });
-    fetchLogin(userInput, loginType);
+    fetchLogin(userInput, loginType, setLoginCheckToggle);
   }
-  const token = useSelector((state) => state.Auth.token);
-  const logintype = useSelector((state) => state.Auth.loginType);
-  const navigete = useNavigate();
+
   useEffect(() => {
     if (token && logintype !== "") {
       navigete("/");
@@ -36,26 +37,26 @@ const LoginComponets = () => {
       <div className="form-wrap">
         <div className="tabs">
           <h3 className="buyer-login-tab">
-            <a
+            <div
               className={toggle ? "active" : ""}
-              href="#buyer-login-tab-content"
               onClick={() => {
                 setToggle(true);
+                setLoginCheckToggle(true);
               }}
             >
               구매회원 로그인
-            </a>
+            </div>
           </h3>
           <h3 className="seller-login-tab">
-            <a
+            <div
               className={toggle ? "" : "active"}
-              href="#seller-login-tab-content"
               onClick={() => {
                 setToggle(false);
+                setLoginCheckToggle(true);
               }}
             >
               판매회원 로그인
-            </a>
+            </div>
           </h3>
         </div>
         <div className="tabs-content">
@@ -72,6 +73,7 @@ const LoginComponets = () => {
                     ...userInput,
                     username: e.target.value,
                   });
+                  setLoginCheckToggle(true);
                 }}
               />
               <input
@@ -85,8 +87,12 @@ const LoginComponets = () => {
                     ...userInput,
                     password: e.target.value,
                   });
+                  setLoginCheckToggle(true);
                 }}
               />
+              <SAlert className={loginCheckToggle ? "" : "active"}>
+                아이디 또는 비번번호가 일치하지 않습니다!
+              </SAlert>
               <button
                 onClick={() => loginCheckfunc("buyer")}
                 className="button"
@@ -109,6 +115,7 @@ const LoginComponets = () => {
                     ...userInput,
                     username: e.target.value,
                   });
+                  setLoginCheckToggle(true);
                 }}
               />
               <input
@@ -122,8 +129,12 @@ const LoginComponets = () => {
                     ...userInput,
                     password: e.target.value,
                   });
+                  setLoginCheckToggle(true);
                 }}
               />
+              <SAlert className={loginCheckToggle ? "" : "active"}>
+                아이디 또는 비번번호가 일치하지 않습니다!
+              </SAlert>
               <input
                 type="button"
                 className="button"
@@ -140,3 +151,11 @@ const LoginComponets = () => {
 };
 
 export default LoginComponets;
+const SAlert = styled.div`
+  color: red;
+  margin-top: 15px;
+  display: none;
+  .active {
+    display: block;
+  }
+`;

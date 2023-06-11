@@ -5,7 +5,7 @@ import { setLoginType } from "../../../module/redux/reducers/AuthReducer";
 const useLoginProcess = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  async function fetchLogin(userInput, loginType) {
+  async function fetchLogin(userInput, loginType, setLoginCheckToggle) {
     try {
       console.log(userInput);
       const response = await fetch(
@@ -20,7 +20,8 @@ const useLoginProcess = () => {
       );
       const responseData = await response.json();
       if (!response.ok) {
-        alert("아이디 비밀번호를 확인해주세요!");
+        // alert("아이디 비밀번호를 확인해주세요!");
+        setLoginCheckToggle(false);
       } else {
         const token = responseData.token;
         dispatch(setToken(token));
