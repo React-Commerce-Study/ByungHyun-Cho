@@ -46,7 +46,7 @@ const HeaderNav = () => {
           ) : (
             <StyledCartBtn>
               <StyledNavImg src={UserInfo} alt="logo" />
-              <div>마이페이지</div>
+              <DropDown />
             </StyledCartBtn>
           )}
 

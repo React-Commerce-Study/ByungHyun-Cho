@@ -32,6 +32,15 @@ const LoginComponets = () => {
     }
   });
 
+  const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") {
+      if (toggle) {
+        loginCheckfunc("buyer");
+      } else {
+        loginCheckfunc("seller");
+      }
+    }
+  };
   return (
     <>
       <div className="form-wrap">
@@ -68,6 +77,7 @@ const LoginComponets = () => {
                 id="sell-user-login"
                 autoComplete="on"
                 placeholder="아이디"
+                onKeyDown={handleOnKeyPress}
                 onChange={(e) => {
                   setUserInput({
                     ...userInput,
@@ -82,6 +92,7 @@ const LoginComponets = () => {
                 id="sell-user-pass"
                 autoComplete="on"
                 placeholder="비밀번호"
+                onKeyDown={handleOnKeyPress}
                 onChange={(e) => {
                   setUserInput({
                     ...userInput,
@@ -110,6 +121,7 @@ const LoginComponets = () => {
                 id="buy-user_login"
                 autoComplete="off"
                 placeholder="아이디"
+                onKeyDown={handleOnKeyPress}
                 onChange={(e) => {
                   setUserInput({
                     ...userInput,
@@ -124,6 +136,7 @@ const LoginComponets = () => {
                 id="buy-user_pass"
                 autoComplete="off"
                 placeholder="비밀번호"
+                onKeyDown={handleOnKeyPress}
                 onChange={(e) => {
                   setUserInput({
                     ...userInput,
@@ -145,7 +158,6 @@ const LoginComponets = () => {
           </div>
         </div>
       </div>
-      {/* <LoginProcess userInput={userInput} setUserCheck={setUserCheck} /> */}
     </>
   );
 };
