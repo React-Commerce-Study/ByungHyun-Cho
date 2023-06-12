@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ByungHyun-Cho/static/css/main.05b9baca.css",
-    "main.js": "/ByungHyun-Cho/static/js/main.c6423d86.js",
+    "main.js": "/ByungHyun-Cho/static/js/main.17b13739.js",
     "static/media/Logo-hodu.svg": "/ByungHyun-Cho/static/media/Logo-hodu.d22d381720462ce3eab571ecc68ac91a.svg",
     "static/media/icon-insta.svg": "/ByungHyun-Cho/static/media/icon-insta.9e59c95a1d553058b9ac7df140b208d2.svg",
     "static/media/icon-shopping-cart.svg": "/ByungHyun-Cho/static/media/icon-shopping-cart.fb559eef06cbd36853bca34c03d0dc36.svg",
@@ -13,10 +13,10 @@
     "static/media/icon-plus-line.svg": "/ByungHyun-Cho/static/media/icon-plus-line.d658909c1751cb655de642c07d7e90da.svg",
     "static/media/icon-minus-line.svg": "/ByungHyun-Cho/static/media/icon-minus-line.73ef1e8c52aa8aab95e50eec7036f567.svg",
     "main.05b9baca.css.map": "/ByungHyun-Cho/static/css/main.05b9baca.css.map",
-    "main.c6423d86.js.map": "/ByungHyun-Cho/static/js/main.c6423d86.js.map"
+    "main.17b13739.js.map": "/ByungHyun-Cho/static/js/main.17b13739.js.map"
   },
   "entrypoints": [
     "static/css/main.05b9baca.css",
-    "static/js/main.c6423d86.js"
+    "static/js/main.17b13739.js"
   ]
 }
