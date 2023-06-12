@@ -38,6 +38,7 @@ const ProductPageNav = styled.div`
     display: flex;
     cursor: pointer;
     text-align: center;
+    text-decoration: none;
   }
   .toggleActive {
     font-weight: bold;
