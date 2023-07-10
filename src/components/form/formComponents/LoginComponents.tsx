@@ -1,43 +1,48 @@
-import React, { useEffect, useState } from "react";
+import "../SignForm.css";
+import React, { useEffect, useState, ChangeEvent, KeyboardEvent } from "react";
 import useLoginProcess from "../Process/useLoginProcess";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-const LoginComponets = () => {
-  const [toggle, setToggle] = useState(true);
 
-  const [loginCheckToggle, setLoginCheckToggle] = useState(true);
+interface UserInput {
+  username: string;
+  password: string;
+  login_type: string;
+}
 
-  const token = useSelector((state) => state.Auth.token);
+interface LoginComponentsProps {}
 
-  const logintype = useSelector((state) => state.Auth.loginType);
-
-  const [userInput, setUserInput] = useState({
+const LoginComponents = (props: LoginComponentsProps) => {
+  const [toggle, setToggle] = useState<boolean>(true);
+  const [loginCheckToggle, setLoginCheckToggle] = useState<boolean>(true);
+  const token = useSelector((state: any) => state.Auth.token);
+  const logintype = useSelector((state: any) => state.Auth.loginType);
+  const dispatch = useDispatch();
+  const [userInput, setUserInput] = useState<UserInput>({
     username: "",
     password: "",
     login_type: "",
   });
-
   const fetchLogin = useLoginProcess();
+  const navigate = useNavigate();
 
-  const navigete = useNavigate();
-
-  function loginCheckfunc(type) {
+  function loginCheckfunc(type: string) {
     const loginType = type === "buyer" ? "BUYER" : "SELLER";
-    setUserInput({
-      ...userInput,
+    setUserInput((prevState) => ({
+      ...prevState,
       login_type: loginType,
-    });
+    }));
     fetchLogin(userInput, loginType, setLoginCheckToggle);
   }
 
   useEffect(() => {
     if (token && logintype !== "") {
-      navigete("/");
+      navigate("/");
     }
-  }, []);
+  }, [token, logintype, navigate]);
 
-  const handleOnKeyPress = (e) => {
+  const handleOnKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       if (toggle) {
         loginCheckfunc("buyer");
@@ -46,6 +51,7 @@ const LoginComponets = () => {
       }
     }
   };
+
   return (
     <>
       <div className="form-wrap">
@@ -83,11 +89,11 @@ const LoginComponets = () => {
                 autoComplete="on"
                 placeholder="아이디"
                 onKeyDown={handleOnKeyPress}
-                onChange={(e) => {
-                  setUserInput({
-                    ...userInput,
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setUserInput((prevState) => ({
+                    ...prevState,
                     username: e.target.value,
-                  });
+                  }));
                   setLoginCheckToggle(true);
                 }}
               />
@@ -98,16 +104,16 @@ const LoginComponets = () => {
                 autoComplete="on"
                 placeholder="비밀번호"
                 onKeyDown={handleOnKeyPress}
-                onChange={(e) => {
-                  setUserInput({
-                    ...userInput,
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setUserInput((prevState) => ({
+                    ...prevState,
                     password: e.target.value,
-                  });
+                  }));
                   setLoginCheckToggle(true);
                 }}
               />
               <SAlert className={loginCheckToggle ? "" : "active"}>
-                아이디 또는 비번번호가 일치하지 않습니다!
+                아이디 또는 비밀번호가 일치하지 않습니다!
               </SAlert>
               <button
                 onClick={() => loginCheckfunc("buyer")}
@@ -127,11 +133,11 @@ const LoginComponets = () => {
                 autoComplete="off"
                 placeholder="아이디"
                 onKeyDown={handleOnKeyPress}
-                onChange={(e) => {
-                  setUserInput({
-                    ...userInput,
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setUserInput((prevState) => ({
+                    ...prevState,
                     username: e.target.value,
-                  });
+                  }));
                   setLoginCheckToggle(true);
                 }}
               />
@@ -142,16 +148,16 @@ const LoginComponets = () => {
                 autoComplete="off"
                 placeholder="비밀번호"
                 onKeyDown={handleOnKeyPress}
-                onChange={(e) => {
-                  setUserInput({
-                    ...userInput,
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setUserInput((prevState) => ({
+                    ...prevState,
                     password: e.target.value,
-                  });
+                  }));
                   setLoginCheckToggle(true);
                 }}
               />
               <SAlert className={loginCheckToggle ? "" : "active"}>
-                아이디 또는 비번번호가 일치하지 않습니다!
+                아이디 또는 비밀번호가 일치하지 않습니다!
               </SAlert>
               <input
                 type="button"
@@ -167,12 +173,14 @@ const LoginComponets = () => {
   );
 };
 
-export default LoginComponets;
-const SAlert = styled.div`
+export default LoginComponents;
+
+const SAlert = styled.div<{ className: string }>`
   color: red;
   margin-top: 15px;
   display: none;
-  .active {
+
+  &.active {
     display: block;
   }
 `;

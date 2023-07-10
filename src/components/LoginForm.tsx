@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import Logo from "../assets/Logo-hodu.svg";
-import SignForm from "./form/SignForm";
+import SignForm from "./form/SignForm.tsx";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import LogoCompoent from "./common/LogoCompoent";

@@ -1,12 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../../module/redux/reducers/AuthReducer";
-import { setLoginType } from "../../../module/redux/reducers/AuthReducer";
+import {
+  setToken,
+  setLoginType,
+} from "../../../module/redux/reducers/AuthReducer";
+
 const useLoginProcess = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  async function fetchLogin(userInput, loginType, setLoginCheckToggle) {
+  const fetchLogin = async (
+    userInput: object,
+    loginType: string,
+    setLoginCheckToggle: (toggle: boolean) => void
+  ): Promise<void> => {
     try {
       console.log(userInput);
       const response = await fetch(
@@ -31,7 +38,7 @@ const useLoginProcess = () => {
     } catch (error) {
       console.error("데이터를 가져오는데 문제가 생겼습니다.", error);
     }
-  }
+  };
 
   return fetchLogin;
 };

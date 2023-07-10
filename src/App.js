@@ -7,7 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import AddCart from "./pages//AddCart";
-import Login from "./pages//Login";
+import Login from "./pages//Login.tsx";
 import SignUp from "./pages//SignUp";
 import ProductList from "./pages//ProductList";
 import OrderPay from "./pages/OrderPay";

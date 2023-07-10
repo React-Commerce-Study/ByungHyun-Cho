@@ -1,5 +1,5 @@
 import React from "react";
-import SignForm from "../components/form/SignForm";
+import SignForm from "../components/form/SignForm.tsx";
 import Logo from "../assets/Logo-hodu.svg";
 import styled from "styled-components";
 import LogoCompoent from "../components/common/LogoCompoent";
