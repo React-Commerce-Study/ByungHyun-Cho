@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "../components/Banner";
-import HeaderNav from "../components/HeaderNav";
+import HeaderNav from "../components/HeaderNav.tsx";
 import WenivFooter from "../components/WenivFooter";
 import ProductProcess from "../components/form/Process/ProductProcess";
 

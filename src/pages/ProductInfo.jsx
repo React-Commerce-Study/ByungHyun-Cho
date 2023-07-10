@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import HeaderNav from "../components/HeaderNav";
+import HeaderNav from "../components/HeaderNav.tsx";
 import ItemAddButton from "../components/ItemAddButton";
 
 const ProductInfo = () => {

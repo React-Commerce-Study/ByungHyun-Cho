@@ -9,17 +9,20 @@ import ShoppingBag from "../assets/icon-shopping-bag.svg";
 import { useSelector } from "react-redux";
 import DropDown from "./DropDown";
 
-const HeaderNav = () => {
-  const token = useSelector((state) => state.Auth.token);
-  const logintype = useSelector((state) => state.Auth.loginType);
+const HeaderNav: React.FC = () => {
+  const token = useSelector((state: any) => state.Auth.token);
+  const logintype = useSelector((state: any) => state.Auth.loginType);
 
   const navigate = useNavigate();
+
   function goMain() {
     navigate("/product/1");
   }
+
   function goAddCart() {
     navigate("/addcart");
   }
+
   function goLogin() {
     navigate("/login");
   }
@@ -71,6 +74,7 @@ const HeaderNav = () => {
 };
 
 export default HeaderNav;
+
 const StyledHeaderWrapper = styled.div`
   width: 100%;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
@@ -85,14 +89,17 @@ const StyledHeaderNav = styled.header`
   justify-content: space-between;
   align-items: center;
 `;
+
 const StyledNavbarLeft = styled.div`
   display: flex;
   gap: 15px;
 `;
+
 const StyledNavbarRight = styled.div`
   display: flex;
   gap: 15px;
 `;
+
 const StyledCartBtn = styled.div`
   display: flex;
   flex-direction: column;
@@ -100,12 +107,15 @@ const StyledCartBtn = styled.div`
   font-size: 12px;
   color: #767676;
 `;
+
 const StyledNavImg = styled.img`
   cursor: pointer;
 `;
+
 const SSellerImg = styled.img`
   color: black;
 `;
+
 const SSellerBtn = styled.div`
   display: flex;
   justify-content: center;
