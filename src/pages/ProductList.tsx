@@ -1,8 +1,8 @@
 import React from "react";
-import Banner from "../components/Banner";
+import Banner from "../components/Banner.tsx";
 import HeaderNav from "../components/HeaderNav.tsx";
-import WenivFooter from "../components/WenivFooter";
-import ProductProcess from "../components/form/Process/ProductProcess";
+import WenivFooter from "../components/WenivFooter.tsx";
+import ProductProcess from "../components/form/Process/ProductProcess.tsx";
 
 const ProductList = () => {
   return (

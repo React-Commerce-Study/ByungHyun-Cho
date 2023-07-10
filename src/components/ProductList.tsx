@@ -2,7 +2,19 @@ import React from "react";
 import ProductItem from "./ProductItem";
 import styled from "styled-components";
 
-export default function ImageList({ productList }) {
+interface ProductListProps {
+  productList: {
+    product_id: number;
+    image: string;
+    product_name: string;
+    store_name: string;
+    price: number;
+    shipping_fee: boolean;
+    stock: number;
+  }[];
+}
+
+const ProductList: React.FC<ProductListProps> = ({ productList }) => {
   return (
     <StyledImageContainer>
       {productList.map((item) => {
@@ -22,11 +34,12 @@ export default function ImageList({ productList }) {
       })}
     </StyledImageContainer>
   );
-}
+};
 
 const StyledImageList = styled.li`
   list-style: none;
 `;
+
 const StyledImageContainer = styled.ul`
   display: flex;
   justify-content: flex-start;
@@ -40,3 +53,5 @@ const StyledImageContainer = styled.ul`
   margin-top: 80px;
   max-width: 1280px;
 `;
+
+export default ProductList;

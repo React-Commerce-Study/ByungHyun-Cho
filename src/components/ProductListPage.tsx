@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
-const ProductListPage = ({ productPage }) => {
+interface ProductListPageProps {
+  productPage: number[];
+}
+
+const ProductListPage: React.FC<ProductListPageProps> = ({ productPage }) => {
   const location = useLocation();
   console.log(location.pathname);
   return (
