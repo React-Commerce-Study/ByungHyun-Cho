@@ -2,8 +2,8 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import HeaderNav from "../components/HeaderNav.tsx";
 import styled from "styled-components";
-import ProductCartProcess from "../components/form/Process/ProductCartProcess";
-import CartItem from "../components/CartItem";
+import ProductCartProcess from "../components/form/Process/ProductCartProcess.tsx";
+import CartItem from "../components/CartItem.tsx";
 const AddCart = () => {
   const location = useLocation();
   return (

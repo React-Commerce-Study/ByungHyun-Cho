@@ -1,8 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavigateFunction } from "react-router-dom";
 
-export default function ProductItem({
+interface ProductItemProps {
+  img: string;
+  title: string;
+  store: string;
+  price: string;
+  product_id: number;
+  shipping_fee: boolean;
+  stock: number;
+}
+
+const ProductItem: React.FC<ProductItemProps> = ({
   img,
   title,
   store,
@@ -10,13 +20,15 @@ export default function ProductItem({
   product_id,
   shipping_fee,
   stock,
-}) {
-  const navigate = useNavigate();
+}) => {
+  const navigate: NavigateFunction = useNavigate();
+
   function goProductInfo() {
     navigate("/ProductInfo", {
       state: { img, title, store, price, product_id, shipping_fee, stock },
     });
   }
+
   return (
     <StyledProductContainer onClick={() => goProductInfo()}>
       <StyledImage src={img} alt="" />
@@ -25,7 +37,8 @@ export default function ProductItem({
       <StyledPrice>{price}원</StyledPrice>
     </StyledProductContainer>
   );
-}
+};
+
 const StyledImage = styled.img`
   width: 380px;
   height: 380px;
@@ -37,12 +50,17 @@ const StyledImage = styled.img`
     scale: 1.05;
   }
 `;
+
 const StyledPrice = styled.div`
   font-weight: bold;
 `;
+
 const StyledStore = styled.div`
   color: #21bf48;
 `;
+
 const StyledProductContainer = styled.div`
   cursor: pointer;
 `;
+
+export default ProductItem;

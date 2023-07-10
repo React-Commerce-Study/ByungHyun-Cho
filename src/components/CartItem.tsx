@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CartItemProcess from "./CartItemProcess";
-const CartItem = ({ cartData }) => {
+
+interface CartItemProps {
+  cartData: {
+    count: number;
+    results: {
+      product_id: number;
+      quantity: number;
+    }[];
+  };
+}
+
+const CartItem: React.FC<CartItemProps> = ({ cartData }) => {
   const basicURL = "https://openmarket.weniv.co.kr/";
   const CartURL = `products/`;
   const fetchURL = basicURL + CartURL;
-  const [productData, setProductCartData] = useState([]);
+  const [productData, setProductCartData] = useState<any[]>([]);
   const [fetchCheck, setFetchCheck] = useState(false);
-  const cartItemIDArr = [];
-  const cartItemQuantityArr = [];
+  const cartItemIDArr: number[] = [];
+  const cartItemQuantityArr: number[] = [];
   const cartCount = cartData.count;
 
   useEffect(() => {
@@ -25,7 +36,7 @@ const CartItem = ({ cartData }) => {
     setFetchCheck(true);
   }, []);
 
-  async function fetchProducts(product_id, quantity) {
+  async function fetchProducts(product_id: number, quantity: number) {
     try {
       const response = await fetch(fetchURL + product_id, {
         method: "GET",
@@ -50,12 +61,10 @@ const CartItem = ({ cartData }) => {
             return (
               <SCartList key={item.product_id}>
                 <CartItemProcess
-                  cartData={cartData}
                   img={item.image}
                   title={item.product_name}
                   store={item.store_name}
                   price={item.price}
-                  product_id={item.product_id}
                   shipping_fee={item.shipping_fee}
                   stock={item.stock}
                   quantity={item.quantity}
@@ -72,10 +81,12 @@ const CartItem = ({ cartData }) => {
 };
 
 export default CartItem;
+
 const SCartList = styled.li`
   list-style: none;
   width: 100%;
 `;
+
 const SCardLayout = styled.ul`
   display: flex;
   flex-direction: column;

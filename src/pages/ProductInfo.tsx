@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import HeaderNav from "../components/HeaderNav.tsx";
+import HeaderNav from "../components/HeaderNav";
 import ItemAddButton from "../components/ItemAddButton";
+
+interface ProductInfoState {
+  img: string;
+  title: string;
+  store: string;
+  price: string;
+  shipping_fee: number;
+  stock: number;
+}
 
 const ProductInfo = () => {
   const location = useLocation();
 
-  const productInfo = location.state;
+  const productInfo = location.state as ProductInfoState;
 
   const [toggle, setToggle] = useState(0);
 
@@ -15,12 +24,13 @@ const ProductInfo = () => {
 
   const [productItemNum, setProductItemNum] = useState(1);
 
-  function uncomma(str) {
+  function uncomma(str: string): string {
     return str.replace(/[^\d-/]+/g, "");
   }
   const productTotalPrice = (
-    uncomma(productInfo.price) * productItemNum
+    parseInt(uncomma(productInfo.price)) * productItemNum
   ).toLocaleString();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -37,7 +47,7 @@ const ProductInfo = () => {
       <HeaderNav />
       <StyledProductInfoContainer>
         <StyledProductInfoImgContainer>
-          <ProductInfoImg src={productInfo.img} alt="img"></ProductInfoImg>
+          <ProductInfoImg src={productInfo.img} alt="img" />
           <StyledProductInfoOrderContainer>
             <SGreenFont>{productInfo.store}</SGreenFont>
             <StyledProductInfoTitle>{productInfo.title}</StyledProductInfoTitle>

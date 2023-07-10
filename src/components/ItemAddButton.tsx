@@ -3,8 +3,18 @@ import styled from "styled-components";
 import Plus from "../assets/icon-plus-line.svg";
 import Minus from "../assets/icon-minus-line.svg";
 
-const ItemAddButton = ({ productItemNum, setProductItemNum, stock }) => {
-  function productItemNumHandler(type) {
+interface ItemAddButtonProps {
+  productItemNum: number;
+  setProductItemNum: React.Dispatch<React.SetStateAction<number>>;
+  stock: number;
+}
+
+const ItemAddButton: React.FC<ItemAddButtonProps> = ({
+  productItemNum,
+  setProductItemNum,
+  stock,
+}) => {
+  function productItemNumHandler(type: "plus" | "minus") {
     if (type === "plus") {
       setProductItemNum(productItemNum + 1);
     } else {
@@ -15,7 +25,7 @@ const ItemAddButton = ({ productItemNum, setProductItemNum, stock }) => {
       return;
     }
     if (stock <= productItemNum) {
-      alert(`재고가 부족합니다. 최대 구매가능수량은 ${stock}개 입니다.`);
+      alert(`재고가 부족합니다. 최대 구매 가능 수량은 ${stock}개 입니다.`);
       setProductItemNum(productItemNum);
       return;
     }
@@ -23,9 +33,9 @@ const ItemAddButton = ({ productItemNum, setProductItemNum, stock }) => {
   return (
     <>
       {stock === 0 ? (
-        <ProcudctInfoItems>현재 품절입니다.</ProcudctInfoItems>
+        <ProductInfoItems>현재 품절입니다.</ProductInfoItems>
       ) : (
-        <ProcudctInfoItems>
+        <ProductInfoItems>
           <div>
             <div
               onClick={() => {
@@ -43,7 +53,7 @@ const ItemAddButton = ({ productItemNum, setProductItemNum, stock }) => {
               <img src={Plus} alt="plus" />
             </div>
           </div>
-        </ProcudctInfoItems>
+        </ProductInfoItems>
       )}
     </>
   );
@@ -51,7 +61,7 @@ const ItemAddButton = ({ productItemNum, setProductItemNum, stock }) => {
 
 export default ItemAddButton;
 
-const ProcudctInfoItems = styled.div`
+const ProductInfoItems = styled.div`
   border-top: 2px solid #c4c4c4;
   border-bottom: 2px solid #c4c4c4;
   padding: 30px 0px;

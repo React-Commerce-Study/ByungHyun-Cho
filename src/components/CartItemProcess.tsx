@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ItemAddButton from "./ItemAddButton";
-function CartItemProcess({
+
+interface CartItemProcessProps {
+  img: string;
+  title: string;
+  store: string;
+  price: number;
+  shipping_fee: number;
+  stock: number;
+  quantity: number;
+}
+
+const CartItemProcess: React.FC<CartItemProcessProps> = ({
   img,
   title,
   store,
   price,
-  product_id,
   shipping_fee,
   stock,
-  cartData,
   quantity,
-}) {
+}) => {
   console.log(quantity);
   const [productItemNum, setProductItemNum] = useState(quantity);
 
@@ -45,14 +54,16 @@ function CartItemProcess({
       </div>
     </StyledProductContainer>
   );
-}
+};
 
 export default CartItemProcess;
+
 const SProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 2;
 `;
+
 const StyledImage = styled.img`
   width: 160px;
   height: 160px;
@@ -64,12 +75,15 @@ const StyledImage = styled.img`
     scale: 1.05;
   }
 `;
+
 const StyledPrice = styled.div`
   font-weight: bold;
 `;
+
 const StyledStore = styled.div`
   color: #21bf48;
 `;
+
 const StyledProductContainer = styled.div`
   width: 100%;
   display: flex;
@@ -83,6 +97,7 @@ const StyledProductContainer = styled.div`
     width: 1.25em;
     height: 1.25em;
   }
+
   [type="radio"]:hover {
     box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
     cursor: pointer;

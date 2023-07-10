@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CartItem from "../../CartItem";
-const ProductCartProcess = () => {
+
+const ProductCartProcess: React.FC = () => {
   const basicURL = "https://openmarket.weniv.co.kr/";
   const CartURL = "cart/";
   const fetchURL = basicURL + CartURL;
-  const [cartData, setCartData] = useState({});
-  const token = useSelector((state) => state.Auth.token);
+  const [cartData, setCartData] = useState<any>({});
+  const token = useSelector((state: any) => state.Auth.token);
   const [fetchLoading, setFetchLoading] = useState(false);
 
   useEffect(() => {
