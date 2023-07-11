@@ -5,6 +5,7 @@ import {
   Route,
   Router,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import AddCart from "./pages//AddCart";
 import Login from "./pages//Login.tsx";
@@ -18,15 +19,16 @@ import "./App.css";
 function App() {
   const location = useLocation();
 
-  useEffect(() => {
-    if (window.location.pathname === "/") {
-      window.location.href = "/product/1";
-    }
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   if (window.location.pathname === "/") {
+  //     console.log("여기 들어오나요?");
+  //     window.location.href = "/product/1";
+  //   }
+  // }, [location.pathname]);
   return (
     <div>
       <Routes>
-        {/* <Route path="/" element={<Navigate to="/product" replace />} /> */}
+        <Route path="/" element={<Navigate to="/product/1" replace />} />
         <Route path={"/Login"} element={<Login />} />
         <Route path={"/SignUp"} element={<SignUp />} />
         <Route path={"/product/:productId"} element={<ProductList />} />
